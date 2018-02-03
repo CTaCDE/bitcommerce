@@ -1210,26 +1210,6 @@ display:block;
   background: #e5e4e2;
     border:1px solid #e5e4e2;
 }
-.special h3:before {
-  height: 8px;
-  width: 371px;
-  content: '';
-  background: url(../images/line.png)no-repeat;
-  display: block;
-  position: absolute;
-  left: 301px;
-  top: 87px;
-}
-.special h3:after {
-  height: 8px;
-  width: 371px;
-  content: '';
-  background: url(../images/line.png)no-repeat;
-  display: block;
-  position: absolute;
-  right: 301px;
-  top: 87px;
-}
 .special h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5em;
