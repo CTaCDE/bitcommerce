@@ -46,7 +46,7 @@ body a{
 		}
 .item_add {
   color: #fff;
- 
+  
   border:none;
 }	
 	
@@ -283,6 +283,7 @@ a.item_add1:hover{
 	padding:25px 40px;
 	font-size:1.1em;
 }
+
 ul.qty{
 	padding:0;
 	margin:0;
@@ -978,7 +979,12 @@ i.ars {
 }
 .special {
   padding: 4em 0;
-    position: relative;
+  position: relative;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 i.facebok {
   width: 35px;
