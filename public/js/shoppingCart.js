@@ -22,3 +22,8 @@ function addToCart(item_price, cart_quantity) {
 function printCartQuant(item_price, cart_quantity) {
 	element.innerHTML = addToCart(item_price, cart_quantity);
 }
+
+function removeFromCart(){
+	cart_quantity = cart_quantity - 1;
+	console.log(cart_quantity);
+}

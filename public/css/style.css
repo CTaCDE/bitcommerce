@@ -21,6 +21,10 @@ body a{
 	-ms-transition:0.5s all;
 }
 /*----*/
+
+.img-responsive{
+	padding-top:30px;
+}
 .itemContainer{
 			width:100%;
 			float:left;
