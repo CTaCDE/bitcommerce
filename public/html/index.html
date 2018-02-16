@@ -20,6 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- jQuery (necessary JavaScript plugins) -->
 <script type='text/javascript' src="../js/jquery-1.11.1.min.js"></script>
 <script type='text/javascript' src="../js/shoppingCart.js"></script>
+<script type='text/javascript' src="../js/index.js"> </script>
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
@@ -37,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="../js/menu_jquery.js"></script>
 <script src="../js/simpleCart.min.js"> </script>
 </head>
-<body>
+<body onload="getStoreItems('item_container');">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNDTP2T&gtm_auth=PV42QnweqPz83q0MkZj-tQ&gtm_preview=env-2&gtm_cookies_win=x"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -95,7 +96,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 				</div>
 				<div class="reg">
-					<a href="#">REGISTER</a>
+					<a href="../html/register.html">REGISTER</a>
 				</div>
 			<div class="cart box_1">
 				<a href="../html/checkout.html">
@@ -154,173 +155,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="special">
 	<div class="container">
 		<div class="special-top">
-			<ul class="grid_2">
-			<li>
-				<a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
-					<center>
-	<!--Paypal button-->					
-						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
-							<option value="S">S </option>
-							<option value="M">M </option>
-							<option value="L">L </option>
-						</select> </td></tr>
-						</table>
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
+			<ul id="item_container" class="grid_2">
+<!--                 <li>
+                    <a href="../html/details.html"><img src="../images/0.jpg" class="img-responsive" alt=""></a>
+                    <div class="special-info grid_1 simpleCart_shelfItem">
+                        <h5>THIS IS THE STATIC ELEMENT</h5>
+                        <div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
+                        <center>
+             
+                            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
+                            <table>
+                            <tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
+                                <option value="S">S </option>
+                                <option value="M">M </option>
+                                <option value="L">L </option>
+                            </select> </td></tr>
+                            </table>
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
 
-	<!--Paypal button-->	
-
-					</center>
-				</div>
-			</li>
-			
-			<li>
-				<a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
-					<center>
-	<!--Paypal button-->					
-						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
-							<option value="S">S </option>
-							<option value="M">M </option>
-							<option value="L">L </option>
-						</select> </td></tr>
-						</table>
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-	<!--Paypal button-->
-
-
-					</center>
-				</div>
-			</li>
-
-			<li>
-				<a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
-					<center>
-	<!--Paypal button-->					
-						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
-							<option value="S">S </option>
-							<option value="M">M </option>
-							<option value="L">L </option>
-						</select> </td></tr>
-						</table>
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-	<!--Paypal button-->
-
-
-					</center>
-				</div>
-			</li>
-			
-			<li>
-				<a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
-					<center>
-	<!--Paypal button-->					
-						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
-							<option value="S">S </option>
-							<option value="M">M </option>
-							<option value="L">L </option>
-						</select> </td></tr>
-						</table>
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-	<!--Paypal button-->
-
-
-					</center>
-				</div>
-			</li>
-			<br><br>
-			<li>
-				<a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
-					<center>
-	<!--Paypal button-->					
-						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
-							<option value="S">S </option>
-							<option value="M">M </option>
-							<option value="L">L </option>
-						</select> </td></tr>
-						</table>
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-	<!--Paypal button-->
-
-
-					</center>
-				</div>
-			</li>
-			
-			<li>
-				<a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>$20.00</h6></span></div>
-					<center>
-	<!--Paypal button-->					
-						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0">
-							<option value="S">S </option>
-							<option value="M">M </option>
-							<option value="L">L </option>
-						</select> </td></tr>
-						</table>
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-	<!--Paypal button-->
-
-
-					</center>
-				</div>
-			</li>
+                        </center>
+                    </div>
+                </li> -->
 			</ul>
 		</div>
 	</div>
 </div>
 
+<!-- footer -->
 <div class="foot-top">
 	<div class="container">
 		<div class="col-md-6 s-c">

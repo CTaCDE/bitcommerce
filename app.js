@@ -53,6 +53,19 @@ dbo.collection("tshirts").find().sort(mysort).toArray(function(err, result) {
         throw err;
     }
     console.log(result);
+console.log("end of app.js");
+/*
+    console.log("Item 1: ");
+    console.log(result[0].name);
+    console.log(result[0].description);
+    console.log("\n");
+
+    console.log("Item 2: ")
+    console.log(result[1].name);
+    console.log(result[1].description);
+    console.log("\n");
+*/
+
     db.close();
 });
 
@@ -66,10 +79,12 @@ dbo.collection("tshirts").find({}).toArray(function(err, result) {
     db.close();
 });
 */
-    // Load the static html/css/js files
+    // Load the html/css/js files
     app.get('/', function(req, res){
         res.sendFile('index.html', { root: __dirname + "/public/html" } );
     });
+
+    // Use the public folder for resource files
     app.use(express.static("public"));
 
     // Start the server with Express.js
