@@ -29,10 +29,11 @@ function getStoreItems (item_container) {
 function printStoreItems (item_container, data) {
     console.log("Loaded loadItems.js!");
 
-    const paypal_button = ' \
+    const paypal_button1 = ' \
     <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> \
     <input type="hidden" name="cmd" value="_s-xclick"> \
-    <input type="hidden" name="hosted_button_id" value="5KLH45E8PS7XU"> \
+    <input type="hidden" name="hosted_button_id" value="';
+    const paypal_button2 = ' "> \
     <table> \
     <tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0"> \
         <option value="S">S </option> \
@@ -53,6 +54,7 @@ function printStoreItems (item_container, data) {
         price = data[i].price;
         name = data[i].name;
         description = data[i].description;
+        paypal_id = data[i].paypal_id;
 
         container_box = document.getElementById(item_container);
         html_string = ' \
@@ -61,7 +63,7 @@ function printStoreItems (item_container, data) {
                 <div class="special-info grid_1 simpleCart_shelfItem"> \
                     <h5>' + name +'</h5> \
                     <div class="item_add"><span class="item_price"><h6>$'+ price +'</h6></span></div> \
-                    <center>' + paypal_button + ' </center> \
+                    <center>' + paypal_button1 + paypal_id + paypal_button2 + ' </center> \
                 </div> \
             </li>';
         container_box.insertAdjacentHTML('beforeend',html_string);
