@@ -1,6 +1,5 @@
 /*
 PRINT THIS HTML FOR EACH ITEM IN THE LIST
-
         <li>
             <a href="../html/details.html"><img src="../images/black_tee_m.jpg" class="img-responsive" alt=""></a>
             <div class="special-info grid_1 simpleCart_shelfItem">
@@ -69,4 +68,3 @@ function printStoreItems (item_container, data) {
         container_box.insertAdjacentHTML('beforeend',html_string);
     }
 } // end function
-
