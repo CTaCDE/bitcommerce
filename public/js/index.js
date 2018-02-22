@@ -28,11 +28,11 @@ function getStoreItems (item_container) {
 function printStoreItems (item_container, data) {
     console.log("Loaded loadItems.js!");
 
-    const paypal_button1 = ' \
+    const paypal_button1half = ' \
     <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> \
     <input type="hidden" name="cmd" value="_s-xclick"> \
     <input type="hidden" name="hosted_button_id" value="';
-    const paypal_button2 = ' "> \
+    const paypal_button2half = ' "> \
     <table> \
     <tr><td><input type="hidden" name="on0" value="Sizes">Sizes</td></tr><tr><td><select name="os0"> \
         <option value="S">S </option> \
@@ -40,6 +40,7 @@ function printStoreItems (item_container, data) {
         <option value="L">L </option> \
     </select> </td></tr> \
     </table> \
+    <br> \
     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> \
     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> \
     </form>';
@@ -58,13 +59,13 @@ function printStoreItems (item_container, data) {
         container_box = document.getElementById(item_container);
         html_string = ' \
             <li> \
-                <a href="../html/details.html"><img src="../images/'+ itemid +'.jpg" class="img-responsive" alt=""></a> \
+                <a href="../html/details.html?itemid=' + itemid + '"><img src="../images/'+ itemid +'.jpg" class="img-responsive" alt=""></a> \
                 <div class="special-info grid_1 simpleCart_shelfItem"> \
                     <h5>' + name +'</h5> \
                     <div class="item_add"><span class="item_price"><h6>$'+ price +'</h6></span></div> \
-                    <center>' + paypal_button1 + paypal_id + paypal_button2 + ' </center> \
+                    <center>' + paypal_button1half + paypal_id + paypal_button2half + ' </center> \
                 </div> \
             </li>';
-        container_box.insertAdjacentHTML('beforeend',html_string);
+        container_box.insertAdjacentHTML('beforeend',html_string); // use afterbegin to show by oldest items first
     }
 } // end function
