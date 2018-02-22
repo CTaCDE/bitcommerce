@@ -44,7 +44,8 @@ function printItem (detail_container, data) {
     price = data[0].price;
     name = data[0].name;
     description = data[0].description;
-    paypal_id = data[0].paypal_id; 
+    paypal_id = data[0].paypal_id;
+    piccount = data[0].pic_count;
 
     html_string = `<div class="women_main">
 					<div class="row single">
@@ -54,23 +55,17 @@ function printItem (detail_container, data) {
 									<ul id="etalage">
 										<li>
 											<a href="../html/optionallink.html">
-												<img class="etalage_thumb_image" src="../images/d1.jpg" class="img-responsive" />
-												<img class="etalage_source_image" src="../images/d1.jpg" class="img-responsive" title="" />
+												<img class="etalage_thumb_image" src="../images/` + itemid + `.jpg" class="img-responsive" />
+												<img class="etalage_source_image" src="../images/` + itemid + `.jpg" class="img-responsive" title="" />
 											</a>
-										</li>
-										<li>
-											<img class="etalage_thumb_image" src="../images/d2.jpg" class="img-responsive" />
-											<img class="etalage_source_image" src="../images/d2.jpg" class="img-responsive" title="" />
-										</li>
-										<li>
-											<img class="etalage_thumb_image" src="../images/d3.jpg" class="img-responsive"  />
-											<img class="etalage_source_image" src="../images/d3.jpg"class="img-responsive"  />
-										</li>
-									    <li>
-											<img class="etalage_thumb_image" src="../images/d4.jpg" class="img-responsive"  />
-											<img class="etalage_source_image" src="../images/d4.jpg"class="img-responsive"  />
-										</li>
-									</ul>
+										</li>`;
+    for(var i = 1; i < piccount; i++) {
+        html_string = html_string +     `<li>
+                                            <img class="etalage_thumb_image" src="../images/` + itemid + `_` + i + `.jpg" class="img-responsive" />
+                                            <img class="etalage_source_image" src="../images/` + itemid + `_` + i + `.jpg" class="img-responsive" title="" />
+                                        </li>`;
+    }                       
+    html_string = html_string +    `</ul>
 									<div class="clearfix"></div>		
 							  	</div>
 							  	<div class="desc1 span_3_of_2">
