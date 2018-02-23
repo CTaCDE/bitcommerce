@@ -13,7 +13,7 @@ function loadFooter(container) {
 						</div>
 						<div class="col-md-2 abt">
 							<h4>ABOUT US</h4>
-							<li><a href="#">Our Stories</a></li>
+							<li><a href="#">Meet the Artists</a></li>
 							<li><a href="#">Press</a></li>
 							<li><a href="#">Career</a></li>
 							<li><a href="#">Contact</a></li>
