@@ -37,9 +37,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="../js/jquery.etalage.min.js"></script>
 <script src="../js/menu_jquery.js"></script>
 <script type='text/javascript' src="../js/details.js"> </script>
+<script type="text/javascript" src="../js/footer.js"> </script>
 
 </head>
-<body onload="getDetails('details_container');">
+<body onload="getDetails('details_container'); loadFooter('thefoot');">
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNDTP2T"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -256,41 +257,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-		<div class="footer">
-			<div class="container">
-				<div class="col-md-3 cust">
-					<h4>CUSTOMER CARE</h4>
-					<li><a href="#">Help Center</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="buy.html">How To Buy</a></li>
-					<li><a href="#">Delivery</a></li>
-				</div>
-				<div class="col-md-2 abt">
-					<h4>ABOUT US</h4>
-					<li><a href="#">Our Stories</a></li>
-					<li><a href="#">Press</a></li>
-					<li><a href="#">Career</a></li>
-					<li><a href="#">Contact</a></li>
-				</div>
-				<div class="col-md-2 myac">
-					<h4>MY ACCOUNT</h4>
-					<li><a href="#">Register</a></li>
-					<li><a href="#">My Cart</a></li>
-					<li><a href="#">Order History</a></li>
-					<li><a href="buy.html">Payment</a></li>
-				</div>
-				<div class="col-md-5 our-st">
-					<div class="our-left">
-						<h4>OUR STORES</h4>
-					</div>
-					<div class="clearfix"> </div>
-					<li><i class="add"> </i>Jl. Haji Muhidin, Blok G no.69</li>
-					<li><i class="phone"> </i>025-2839341</li>
-					<li><a href="mailto:info@example.com"><i class="mail"> </i>info@sitename.com </a></li>	
-				</div>
-				<div class="clearfix"> </div>
-				<p>Copyrights © 2015 Gretong. All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
-			</div>
+		<div class="footer" id="thefoot">
+			
 		</div>
 	</div>  <!--  this one -->
 </body>
