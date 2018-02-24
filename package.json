@@ -53,10 +53,14 @@
     ]
   },
   "dependencies": {
+    "ava": "^0.23.0",
     "conf": "^1.4.0",
     "express": "4.16.2",
+    "jade": "^1.11.0",
     "mongodb": "^3.0.2",
-    "nconf": "^0.10.0"
+    "nconf": "^0.10.0",
+    "pug": "^2.0.0-rc.4",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "2.1.1",
