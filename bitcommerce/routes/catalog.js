@@ -1,10 +1,11 @@
-var express = require('express');
+var express = require('express')
 var router = express.Router();
 
 // Require controller modules
 var tshirts_controller = require('../controllers/tshirtscontroller.js');
 
-// GET request for one tshirt
-router.get('/:itemid', tshirts_controller.tshirts_detail);
+// GET catalog home page / list all tshirts in collection
+router.get('/', tshirts_controller.tshirts_list);
 
 module.exports = router;
+
