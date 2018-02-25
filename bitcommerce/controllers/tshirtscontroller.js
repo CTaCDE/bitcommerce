@@ -11,7 +11,7 @@ exports.index = function(req, res) {
             Tshirts.find(callback);
         }
     }, function(err, results) {
-        res.render('index', {title: '193Tees', error: err, data: results, testList: [1,2,3]});
+        res.render('index', {title: '193Tees', error: err, data: results});
     });
 };
 
@@ -22,6 +22,12 @@ exports.tshirts_list = function(req, res) {
 
 // Display detail page for specific tshirts
 exports.tshirts_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: tshirts_detail ' + req.params.itemid);
+    //res.send('NOT IMPLEMENTED: tshirts_detail ' + req.params.itemid);
+    async.parallel({
+        tshirts_object: function(callback) {
+            Tshirts.find({'itemid': req.params.itemid}, callback);
+        }
+    }, function(err, results) {
+        res.render('details', {title: '193Tees', error:err, data: results});
+    });
 };
-

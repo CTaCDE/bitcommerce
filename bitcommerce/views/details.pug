@@ -1,0 +1,100 @@
+extends layout.pug
+
+block scripts
+    // Google Tag Manager
+    script.
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MNDTP2T');
+    // End Google Tag Manager
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    // jQuery (necessary JavaScript plugins)
+    script(type='text/javascript', src='/javascripts/jquery-1.11.1.min.js')
+    // Custom Theme files
+    link(href='/stylesheets/style.css', rel='stylesheet', type='text/css')
+    // Custom Theme files
+    // //theme-style
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    script(type='application/x-javascript').
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900', rel='stylesheet', type='text/css')
+    link(href='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js')
+    // start menu
+    link(href='/stylesheets/megamenu.css', rel='stylesheet', type='text/css', media='all')
+    link(rel='stylesheet', href='/stylesheets/etalage.css')
+    script(type='text/javascript', src='/javascripts/megamenu.js')
+    script.
+        $(document).ready(function(){$(".megamenu").megamenu();});
+    script(src='/javascripts/jquery.etalage.min.js')
+    script(type='text/javascript' src="/javascripts/shoppingCart.js")
+    script(src="/javascripts/simpleCart.min.js")
+    script(src='/javascripts/menu_jquery.js')
+
+block content
+    .women_main
+        each val in data.tshirts_object
+            .row.single
+                .col-md-9.det
+                    .single_left
+                        .grid.images_3_of_2
+                            ul#etalage
+                                li
+                                    a(href='../html/optionallink.html')
+                                        img.etalage_thumb_image(src='/images/' + val.itemid + '.jpg')
+                                        img.etalage_source_image(src='/images/' + val.itemid + '.jpg', title='')
+                                - for (var i = 1; i < val.pic_count; i++) {
+                                    li
+                                        img.etalage_thumb_image(src='/images/' + val.itemid + '_' + i + '.jpg')
+                                        img.etalage_source_image(src='/images/' + val.itemid + '_' + i + '.jpg', title='')
+                                - }
+                            .clearfix
+                        .desc1.span_3_of_2
+                            h3= val.name
+                            span.brand
+                                | Artist: 
+                                a(href='#') Our Team 
+                            br
+                            span.code Item ID: #{val.itemid}
+                            p= val.description
+                            .price
+                                span.text Price:
+                                span.price  $#{val.price}.00
+                                br
+                            form(target='paypal', action='https://www.paypal.com/cgi-bin/webscr', method='post')
+                                input(type='hidden', name='cmd', value='_s-xclick')
+                                input(type='hidden', name='hosted_button_id', value=val.paypal_id)
+                                table
+                                    tr
+                                        td
+                                            input(type='hidden', name='on0', value='Sizes')
+                                            | Sizes
+                                    tr
+                                        td
+                                            select(name='os0')
+                                                option(value='S') S 
+                                                option(value='M') M 
+                                                option(value='L') L 
+                                br
+                                input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+                                img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+                            a(href='#')
+                                span login to save in wishlist 
+                        .clearfix
+        .clearfix
+        script.
+            jQuery(document).ready(function($){
+            $('#etalage').etalage({
+            thumb_image_width: 400,
+            thumb_image_height: 400,
+            source_image_width: 1200,
+            source_image_height: 1200,
+            show_hint: true,
+            click_callback: function(image_anchor, instance_id){
+            alert('Callback example:\\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+            }
+            });
+            });
