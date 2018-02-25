@@ -1,7 +1,16 @@
-var tshirts = require('../models/tshirts.js');
+var Tshirts = require('../models/tshirts.js');
+var async = require('async');
 
 exports.index = function(req, res) {
-    res.send("NOT IMPLEMENTED: Site Home Page");
+    //res.send("NOT IMPLEMENTED: Site Home Page");
+    async.parallel({
+        tshirts_count: function(callback) {
+            Tshirts.count(callback);
+        }
+
+    }, function(err, results) {
+        res.render('index', {title: '193Tees', error: err, countdata: results, testList: [1,2,3]});
+    });
 };
 
 // Display list of all tshirts
