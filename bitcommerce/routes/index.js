@@ -15,4 +15,6 @@ router.get('/', function(req, res, next) {
 // GET catalog home page / list all tshirts in collection
 router.get('/', tshirts_controller.index);
 
+router.get('/index', tshirts_controller.index);
+
 module.exports = router;
