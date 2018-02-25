@@ -6,10 +6,12 @@ exports.index = function(req, res) {
     async.parallel({
         tshirts_count: function(callback) {
             Tshirts.count(callback);
+        },
+        tshirts_objects: function(callback) {
+            Tshirts.find(callback);
         }
-
     }, function(err, results) {
-        res.render('index', {title: '193Tees', error: err, countdata: results, testList: [1,2,3]});
+        res.render('index', {title: '193Tees', error: err, data: results, testList: [1,2,3]});
     });
 };
 
