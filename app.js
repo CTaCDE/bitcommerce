@@ -1,102 +1,74 @@
-// Copyright 2017, Google, Inc.
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-'use strict';
-
-const mongodb = require('mongodb');
-const express = require('express');
-const app = express();
-const nconf = require('nconf');
+// Include dependency modules
+var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var nconf = require('nconf');
+
+// Define all of the routes
+var index = require('./routes/index');
+var users = require('./routes/users');
+var details = require('./routes/details');
+var catalog = require('./routes/catalog');
+
+var app = express();
 
 // Read in keys and secrets. Using nconf use can set secrets via
 // environment variables, command-line arguments, or a keys.json file.
 nconf.argv().env().file('keys.json');
 
-// Connect to a MongoDB server provisioned over at
-// MongoLab. See the README for more info.
+// Set up mongoose connection
+// extract info from keys.json
 const user = nconf.get('mongoUser');
 const pass = nconf.get('mongoPass');
 const host = nconf.get('mongoHost');
 const port = nconf.get('mongoPort');
-
-let uri = `mongodb://${user}:${pass}@${host}:${port}`;
+var uri = `mongodb://${user}:${pass}@${host}:${port}`;
 if (nconf.get('mongoDatabase')) {
     uri = `${uri}/${nconf.get('mongoDatabase')}`;
 }
-console.log(uri);
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://teesme:awfudge23@ds125198.mlab.com:25198/items';
+mongoose.connect(uri);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-mongodb.MongoClient.connect(uri, function(err, db) {
-    // Attempt to connect to the MongoDB server on mLab
-    if (err) {
-        throw err;
-    } else {
-        console.log("connected");
-    }
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
-// Sort and print all documents from tshirts collection to console
-var dbo = db.db('items');   // database is called items in mLab
-var mysort = { itemid: 1 }; // sort by itemid in ascending order
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-dbo.collection("tshirts").find().sort(mysort).toArray(function(err, result) {
-    if (err) {
-        throw err;
-    }
-    console.log(result);
-console.log("end of app.js");
-/*
-    console.log("Item 1: ");
-    console.log(result[0].name);
-    console.log(result[0].description);
-    console.log("\n");
+app.use('/', index);
+app.use('/users', users);
+app.use('/details', details);
+app.use('/catalog', catalog);
 
-    console.log("Item 2: ")
-    console.log(result[1].name);
-    console.log(result[1].description);
-    console.log("\n");
-*/
-
-    db.close();
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-// Previous testing code to print all items in tshirt collection
-/*
-dbo.collection("tshirts").find({}).toArray(function(err, result) {
-    if (err) {
-        throw err;
-    }
-    console.log(result);
-    db.close();
-});
-*/
-    // Load the html/css/js files
-    app.get('/', function(req, res){
-        res.sendFile('index.html', { root: __dirname + "/public/html" } );
-    });
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // Use the public folder for resource files
-    app.use(express.static("public"));
-
-    // Start the server with Express.js
-    if (module === require.main) {
-        // [START server]
-        const server = app.listen(process.env.PORT || 8080, () => {
-        const port = server.address().port;
-            console.log(`App listening on port ${port}`);
-        });
-        // [END server]
-    }
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;
-
