@@ -31,3 +31,7 @@ exports.tshirts_detail = function(req, res) {
         res.render('details', {title: '193Tees', error:err, data: results});
     });
 };
+
+exports.about = function(req, res) {
+    res.render('about', {title: 'About Us'});
+}
