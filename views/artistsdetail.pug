@@ -36,7 +36,7 @@ block scripts
 
 block content
     .women_main
-        each val in data.tshirts_object
+        each val in data.artists_object
             .row.single
                 .col-md-9.det
                     .single_left
@@ -44,45 +44,26 @@ block content
                             ul#etalage
                                 li
                                     a(href='../html/optionallink.html')
-                                        img.etalage_thumb_image(src='/images/' + val.itemid + '.jpg')
-                                        img.etalage_source_image(src='/images/' + val.itemid + '.jpg', title='')
-                                - for (var i = 1; i < val.pic_count; i++) {
-                                    li
-                                        img.etalage_thumb_image(src='/images/' + val.itemid + '_' + i + '.jpg')
-                                        img.etalage_source_image(src='/images/' + val.itemid + '_' + i + '.jpg', title='')
-                                - }
+                                        img.etalage_thumb_image(src='/images/artist' + val.artistid + '.jpg')
+                                        img.etalage_source_image(src='/images/artist' + val.artistid + '.jpg', title='')
                             .clearfix
                         .desc1.span_3_of_2
                             h3= val.name
                             span.brand
-                                | Artist: 
-                                a(href='/artists/' + val.artistid) #{val.artistname}
+                                | Portfolio: 
+                                a(href=val.portfoliolink) #{val.portfoliolink} 
                             br
-                            span.code Item ID: #{val.itemid}
                             p= val.description
                             .price
-                                span.text Price:
-                                span.price  $#{val.price}.00
+                                span.price  #{val.bio}
                                 br
-                            form(target='paypal', action='https://www.paypal.com/cgi-bin/webscr', method='post')
-                                input(type='hidden', name='cmd', value='_s-xclick')
-                                input(type='hidden', name='hosted_button_id', value=val.paypal_id)
-                                table
-                                    tr
-                                        td
-                                            input(type='hidden', name='on0', value='Sizes')
-                                            | Sizes
-                                    tr
-                                        td
-                                            select(name='os0')
-                                                option(value='S') S 
-                                                option(value='M') M 
-                                                option(value='L') L 
                                 br
-                                input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
-                                img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
-                            a(href='#')
-                                span login to save in wishlist 
+                            span.brand
+                                | My Designs
+                            ul
+                                each subval in val.designs
+                                    li
+                                        h6= subval
                         .clearfix
         .clearfix
         script.
