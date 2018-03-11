@@ -54,6 +54,7 @@ block content
                             .clearfix
                         .desc1.span_3_of_2
                             h3= val.name
+                             p(style='font-size:70%;font-family:verdana')  100% Cotton
                             span.brand
                                 | Artist: 
                                 a(href='/artists/' + val.artistid) #{val.artistname}
@@ -81,9 +82,14 @@ block content
                                 br
                                 input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
                                 img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+
                             //a(href='#')
                             //    span login to save in wishlist 
                         .clearfix
+                        div(style='margin-left:100px')
+                            font(size='6')
+                                | Size Chart
+                        img(src='/images/sizeChart.jpg', width='70%', height='70%')
         .clearfix
         script.
             jQuery(document).ready(function($){
