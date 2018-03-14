@@ -10,5 +10,6 @@ router.get('/', artists_controller.artists_list);
 // GET request for one artist
 router.get('/:artistid', artists_controller.artist_detail);
 
+
 module.exports = router;
 

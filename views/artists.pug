@@ -39,6 +39,19 @@ block content
                                 h5= val.name
                                 .item_add
                                     span.item_price
-                                        h6 #{val.bio}
+                                        .content
+                                            h6 #{val.bio}
+                                        //--------------
+                                        br
+                                        script.
+                                          document.querySelector('button').addEventListener('click', function() {
+                                          document.querySelector('#content').style.height= 'auto';
+                                          this.style.display= 'none';
+                                          });
+                                        #read  
+                                            a(href='artists/' + val.artistid) Read more
+                                        br
+                                        br
+                                        //--------------
                                         a(href=val.portfoliolink) Portfolio
                                 center

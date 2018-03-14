@@ -24,6 +24,7 @@ body a{
 	-ms-transition:0.5s all;
 }
 /*----*/
+/*<<<<<<< Updated upstream*/
 .text {
    content: "...";
    overflow: hidden;
@@ -34,7 +35,30 @@ body a{
    -webkit-line-clamp: 3; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+/*=======
+#read a{
+  background: rgb(0, 0, 0);
+  border: 1px solid #555;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 0.85em;
 
+>>>>>>> Stashed changes*/
+
+/*}*/
+ #read a{
+  background: rgb(0, 0, 0);
+  border: 1px solid #555;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 0.85em;}
+  
+.content{
+	overflow: hidden;
+  height: 5.6em;
+  line-height: 1.2em;
+  width: 200px;
+}
 .img-responsive{
 	padding-top:30px;
 }
@@ -477,6 +501,7 @@ select.item_Size {
   font-size: 0.85em;
   border: none;
 }
+
 /********** Login *************/
 #loginContainer {
     position:relative;
