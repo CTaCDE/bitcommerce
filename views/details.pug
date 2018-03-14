@@ -43,18 +43,19 @@ block content
                         .grid.images_3_of_2
                             ul#etalage
                                 li
-                                    a(href='../html/optionallink.html')
+                                    a
                                         img.etalage_thumb_image(src='/images/' + val.itemid + '.jpg')
-                                        img.etalage_source_image(src='/images/' + val.itemid + '.jpg', title='')
+                                        img.etalage_source_image(style='position:relative' src='/images/' + val.itemid + '.jpg', title='')
                                 - for (var i = 1; i < val.pic_count; i++) {
                                     li
                                         img.etalage_thumb_image(src='/images/' + val.itemid + '_' + i + '.jpg')
-                                        img.etalage_source_image(src='/images/' + val.itemid + '_' + i + '.jpg', title='')
+                                        img.etalage_source_image(style='postion:relative' src='/images/' + val.itemid + '_' + i + '.jpg', title='')
                                 - }
                             .clearfix
                         .desc1.span_3_of_2
                             h3= val.name
                              p(style='font-size:70%;font-family:verdana')  100% Cotton
+                             p(style='font-size:70%;font-family:verdana')  Free Pickup on Campus!
                             span.brand
                                 | Artist: 
                                 a(href='/artists/' + val.artistid) #{val.artistname}
@@ -63,6 +64,7 @@ block content
                             p= val.description
                             .price
                                 span.text Price:
+                                br
                                 span.price  $#{val.price}.00
                                 br
                             form(target='paypal', action='https://www.paypal.com/cgi-bin/webscr', method='post')
