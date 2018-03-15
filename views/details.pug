@@ -62,10 +62,9 @@ block content
                             br
                             span.code Item ID: #{val.itemid}
                             p= val.description
+                            br
                             .price
-                                span.text Price:
-                                br
-                                span.price  $#{val.price}.00
+                                span.text Price: $#{val.price}.00
                                 br
                             form(target='paypal', action='https://www.paypal.com/cgi-bin/webscr', method='post')
                                 input(type='hidden', name='cmd', value='_s-xclick')
