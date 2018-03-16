@@ -35,4 +35,7 @@ exports.tshirts_detail = function(req, res) {
 exports.about = function(req, res) {
     res.render('about', {title: 'About Us'});
 }
+exports.confirmation = function(req, res){
+    res.rendter('confirmation',{title: 'confirmation'});
+}
 
