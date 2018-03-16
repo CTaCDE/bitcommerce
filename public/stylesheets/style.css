@@ -2767,7 +2767,7 @@ p.cart a {
 }
 @media (max-width:1000px){
 
-.navbar-header {
+	.navbar-header {
         float: none;
     }
     .navbar-toggle {
@@ -2783,6 +2783,10 @@ p.cart a {
     .navbar-nav {
         float: none!important;
         margin: 7.5px -15px;
+    }
+    .navbar-btn {
+        float: none!important;
+        margin: -35px -15px;
     }
     .navbar-nav>li {
         float: none;
