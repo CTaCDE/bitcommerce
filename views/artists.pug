@@ -36,11 +36,11 @@ block content
                             a(href='artists/' + val.artistid)
                                 img.img-responsive(src='/images/artist' + val.artistid + '.jpg', alt='')
                             .special-info.grid_1.simpleCart_shelfItem
-                                h5= val.name
+                                h4(style='text-align:center')= val.name
                                 .item_add
                                     span.item_price
                                         .content
-                                            h6 #{val.bio}
+                                            p #{val.bio}
                                         //--------------
                                         br
                                         script.
