@@ -2,11 +2,15 @@ extends layout.pug
 
 block scripts
     link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js', charset='utf-8')
+    script(src='javascripts/outage_chart.js')
 
 block content
     br
     h1(style='text-align:center') Prober Dashboard
     hr
+    h3(style='text-align:center') Website Outages
+    #chart
     table
         tr
             th Downtime Start (PDT)
@@ -22,3 +26,7 @@ block content
                 td= val.contact
                 td= val.error_code
     br
+    script.
+        var objects = !{JSON.stringify(data.logs_objects)};
+        loadChart(objects);
+
