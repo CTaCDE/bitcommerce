@@ -4,6 +4,21 @@
 //     alert("waiting");
 // }
 
+function fbLogout() {
+    FB.logout(function (response) {
+        // Do what ever you want here when logged out like reloading the page, redirect to index
+        // window.location.reload();
+    });
+
+// PUG code for logout button
+/*
+span#fbLogout(onclick='fbLogout()')
+    a.fb_button.fb_button_medium
+        span.fb_button_text Logout
+*/
+
+}
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
     var accountButton = document.getElementById("account-button");
