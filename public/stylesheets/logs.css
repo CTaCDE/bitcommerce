@@ -1,5 +1,5 @@
 table {
-    font-family: arial;
+    font-family: ;
     border-collapse: collapse;
     width: 100%;
     font-size: 18px;
@@ -43,11 +43,9 @@ text    {
     fill:#aaa;
     font-size:1.2em;
 }
-
 .key    {
 	font-size:0.7em;
 }
-
 #chart {
 	left:50%;
 }

@@ -6,23 +6,25 @@ block scripts
 
 block content
     body
-        .sidenav
-            a(href='#') My Orders
-            a(href='/logs') Dashboard (admin)
-            a(href='#') Add Sale Item (admin)
-            a(href='#') Sign Out
-        br
-        .main
-        
-            h1(style='text-align: center;') My Orders
-            hr
-            br
-            table
-                tr
-                    th Order ID
-                    th Order Date
-                each val in data.myaccount_objects
+        .container
+            .sidenav
+                a(href='#') My Orders
+                a(href='/logs') Dashboard (admin)
+                a(href='#') Add Sale Item (admin)
+                a(href='#') Sign Out
+            .main
+                h1(style='text-align: center;') My Orders
+                hr
+                table
                     tr
-                        td= val.orderid
-                        td= val.order_date
-            br
+                        th Order ID
+                        th Order Date
+                        th Quantities
+                        th Item IDs
+                    each val in data.myaccount_objects
+                        tr
+                            td= val.orderid
+                            td= val.order_date
+                            td= val.quantity_list
+                            td= val.item_id_list
+                br

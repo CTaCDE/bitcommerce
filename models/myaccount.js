@@ -7,10 +7,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var myaccountSchema = new Schema({
-    userID:         {type: Number},
-    name:           {type: String},
-    email:          {type: String},
-    orderHistory:   {type: Array},
+    orderid: 			{type: Number},
+    item_id_list: 		{type: Array},
+    quantity_list: 		{type: Array},
+    order_date: 		{type: String},
+    size_list: 			{type: Array}
 });
 
 module.exports = mongoose.model('myaccount', myaccountSchema);

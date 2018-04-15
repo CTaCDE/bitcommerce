@@ -2,11 +2,15 @@ body {
     font-family: "Lato", sans-serif;
     padding: 40px;
 }
+
+.container {
+    padding: 35px;
+}
 .sidenav {
     max-width: 28%;
     position: absolute;
     z-index: 1;
-    top: 20%;
+    top: 25%;
     left: 120px;
     background: #eee;
     overflow-x: hidden;
@@ -26,7 +30,8 @@ body {
 .main {
     margin-left: 140px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 130px;
+    padding: 0px 100px;
+    padding-right: 0px;
 }
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
