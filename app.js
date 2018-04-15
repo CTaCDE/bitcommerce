@@ -15,6 +15,8 @@ var artists = require('./routes/artists');
 var about = require('./routes/about');
 var confirmation = require('./routes/confirmation');
 var logs = require('./routes/logs');
+var terms = require('./routes/terms');
+var privacypolicy = require('./routes/privacypolicy');
 
 var app = express();
 
@@ -58,6 +60,8 @@ app.use('/artists', artists);
 app.use('/about', about);
 app.use('/confirmation', confirmation);
 app.use('/logs',logs);
+app.use('/terms',terms);
+app.use('/privacypolicy', privacypolicy);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

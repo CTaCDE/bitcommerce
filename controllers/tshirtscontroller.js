@@ -32,11 +32,22 @@ exports.tshirts_detail = function(req, res) {
     });
 };
 
+// Display the about page
 exports.about = function(req, res) {
     res.render('about', {title: 'About Us'});
 }
 
+// Display the order confimation page
 exports.confirmation = function(req, res){
     res.render('confirmation', {title: 'Confirmation'});
 }
 
+// Display the Terms page
+exports.terms = function(req, res) {
+    res.render('terms', {title: 'Terms of Service'});
+}
+
+// Display the privacy policy page
+exports.privacypolicy = function(req, res) {
+    res.render('privacypolicy', {title: 'Privacy Policy'});
+}
