@@ -13,18 +13,13 @@ block content
                 a(href='/additems') Add Sale Item (admin)
                 a(href='#') Sign Out
             .main
-                h1(style='text-align: center;') My Orders
+                h1(style='text-align: center;') Add Sale Items
                 hr
                 table
                     tr
-                        th Order ID
-                        th Order Date
-                        th Quantities
-                        th Item IDs
-                    each val in data.myaccount_objects
-                        tr
-                            td= val.orderid
-                            td= val.order_date
-                            td= val.quantity_list
-                            td= val.item_id_list
+                        th Shirt Name
+                        th Shirt Quantity
+                    tr
+                        td data
+                        td data
                 br
