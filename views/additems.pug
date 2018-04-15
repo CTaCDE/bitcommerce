@@ -1,0 +1,25 @@
+extends layout.pug
+
+block scripts
+    link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
+    link(href='stylesheets/myaccount.css', rel='stylesheet', type='text/css')
+
+block content
+    body
+        .container
+            .sidenav
+                a(href='/myaccount') My Orders
+                a(href='/logs') Dashboard (admin)
+                a(href='/additems') Add Sale Item (admin)
+                a(href='#') Sign Out
+            .main
+                h1(style='text-align: center;') Add Sale Items
+                hr
+                table
+                    tr
+                        th Shirt Name
+                        th Shirt Quantity
+                    tr
+                        td data
+                        td data
+                br
