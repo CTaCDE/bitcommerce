@@ -14,4 +14,7 @@
 # [START runtime]
 runtime: nodejs
 env: flex
+handlers:
+- url: /.*
+  secure: always
 # [END runtime]
