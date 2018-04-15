@@ -28,9 +28,29 @@ html
         meta(property="og:type" content="website")
         meta(property="og:title" content="193 Tees")
         meta(property="og:description" content="Online T-shirt e-commerce platform")
-        meta(property="fb:app_id" content="1773162126055716")
+        meta(property="fb:app_id" content="2054747968144280")
 
     body
+        // Facebook SDK
+        script.
+            window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '2054747968144280',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.12'
+            });
+            FB.AppEvents.logPageView();
+            };
+            (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        // End Facebook SDK
+
         // Google Tag Manager (noscript)
         noscript
             iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-MNDTP2T', height='0', width='0', style='display:none;visibility:hidden')
@@ -58,11 +78,11 @@ html
                             input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
                             img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
 
-                        .script
-                            // Display one of the two buttons below
-
+                        // Display one of the two buttons below
                         a(href='https://www.193tees.com/myaccount')
                             img#account-button.navbar-right(src='/images/icon-user.png', alt='User Icon', width='42', height='42', border='0' style='margin: 1vw; margin-right: 0.5vw; display: none')
+
+                        fb:login-button.navbar-right(scope='public_profile,email', onlogin='checkLoginState();')
 
                         form.search.collapse.navbar-collapse.navbar-right(style='border-top-width:7px; font-size:18px; border-color: #black; margin-top:0.5vw')
                             input(
