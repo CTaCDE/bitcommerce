@@ -21,32 +21,10 @@ html
         link(href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css')
         link(href='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js')
         script(src="/javascripts/search.js")
+        script(src="/javascripts/login.js")
         link(rel="icon" type='image/png' href='/images/193logo_1.png')
 
     body
-        script.
-            // Facebook SDK
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId      : '1773162126055716',
-                    cookie     : true,
-                    xfbml      : true,
-                    version    : 'v2.12'
-                });
-
-                FB.AppEvents.logPageView();
-            };
-
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-        script(src="/javascripts/login.js")
-
         // Google Tag Manager (noscript)
         noscript
             iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-MNDTP2T', height='0', width='0', style='display:none;visibility:hidden')
