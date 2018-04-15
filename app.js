@@ -18,6 +18,7 @@ var logs = require('./routes/logs');
 var terms = require('./routes/terms');
 var privacypolicy = require('./routes/privacypolicy');
 var myaccount = require('./routes/myaccount');
+var additems = require('./routes/additems');
 
 var app = express();
 
@@ -64,6 +65,7 @@ app.use('/logs',logs);
 app.use('/terms',terms);
 app.use('/privacypolicy', privacypolicy);
 app.use('/myaccount', myaccount);
+app.use('/additems', additems);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
