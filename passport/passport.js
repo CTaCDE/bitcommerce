@@ -37,7 +37,7 @@ module.exports = function(app, passport) {
         });
 
         /* save if new */
-        user.findOne({email:me.email}, function(err, u) {
+        users.findOne({email:me.email}, function(err, u) {
             if(!u) {
                 me.save(function(err, me) {
                     if(err) return done(err);
