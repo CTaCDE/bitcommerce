@@ -26,7 +26,7 @@ module.exports = function(app, passport) {
       },
       function(accessToken, refreshToken, profile, done) {
         console.log(profile);
-        alert(profile);
+
         // User.findOrCreate(..., function(err, user) {
         //   if (err) { return done(err); }
         //   done(null, user);
