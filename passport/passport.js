@@ -27,6 +27,28 @@ module.exports = function(app, passport) {
       function(accessToken, refreshToken, profile, done) {
         console.log(profile);
 
+        // Create a new user
+        var me = new users({
+            name: profile.displayName,
+            userID: profile.id,
+            email: profile.emails[0].value,
+            orders: [],
+            address: []
+        });
+
+        /* save if new */
+        user.findOne({email:me.email}, function(err, u) {
+            if(!u) {
+                me.save(function(err, me) {
+                    if(err) return done(err);
+                    done(null,me);
+                });
+            } else {
+                console.log(u);
+                done(null, u);
+            }
+        });
+
         // User.findOrCreate(..., function(err, user) {
         //   if (err) { return done(err); }
         //   done(null, user);
