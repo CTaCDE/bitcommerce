@@ -8,6 +8,5 @@ var myaccount_controller = require('../controllers/myaccountcontroller.js');
 router.get('/', myaccount_controller.myaccount_list);
 
 
-
 module.exports = router;
 

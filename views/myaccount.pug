@@ -6,6 +6,12 @@ block scripts
 
 block content
     body
+        
+        script.
+            var objects = !{JSON.stringify(data)};
+            console.log(objects);
+                
+
         .container
             .sidenav
                 a(href='/myaccount') My Orders

@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 // Define a scheme
 var Schema = mongoose.Schema;
 
-var myaccountSchema = new Schema({
+var MyaccountSchema = new Schema({
     orderid: 			{type: Number},
     item_id_list: 		{type: Array},
     quantity_list: 		{type: Array},
@@ -14,4 +14,4 @@ var myaccountSchema = new Schema({
     size_list: 			{type: Array}
 });
 
-module.exports = mongoose.model('myaccount', myaccountSchema);
+module.exports = mongoose.model('myaccount', MyaccountSchema);
