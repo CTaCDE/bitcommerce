@@ -28,7 +28,7 @@ module.exports = function(app, passport) {
         console.log(profile);
 
         // Create a new user
-        var me = new users({
+        var me = new User({
             name: profile.displayName,
             userID: profile.id,
             email: profile.emails[0].value,
@@ -37,7 +37,7 @@ module.exports = function(app, passport) {
         });
 
         /* save if new */
-        users.findOne({email:me.email}, function(err, u) {
+        User.findOne({email:me.email}, function(err, u) {
             if(!u) {
                 me.save(function(err, me) {
                     if(err) return done(err);
