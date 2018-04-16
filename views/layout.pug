@@ -34,20 +34,21 @@ html
         // Facebook SDK
         script.
             window.fbAsyncInit = function() {
-            FB.init({
-            appId      : '2054747968144280',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v2.12'
-            });
-            FB.AppEvents.logPageView();
+                FB.init({
+                    appId      : '2054747968144280',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : 'v2.12'
+                });
+                FB.AppEvents.logPageView();
             };
+
             (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         // End Facebook SDK
 
@@ -82,7 +83,9 @@ html
                         a(href='https://www.193tees.com/myaccount')
                             img#account-button.navbar-right(src='/images/icon-user.png', alt='User Icon', width='42', height='42', border='0' style='margin: 1vw; margin-right: 0.5vw; display: none')
 
-                        fb:login-button.navbar-right(scope='public_profile,email', onlogin='checkLoginState();')
+                        a(href="/auth/facebook" target="_blank") Click me
+
+                        // fb:login-button.navbar-right(scope='public_profile,email', onlogin='checkLoginState();')
 
                         form.search.collapse.navbar-collapse.navbar-right(style='border-top-width:7px; font-size:18px; border-color: #black; margin-top:0.5vw')
                             input(

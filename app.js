@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nconf = require('nconf');
+var passport = require('passport');
 
 // Define all of the routes
 var index = require('./routes/index');
@@ -21,6 +22,7 @@ var myaccount = require('./routes/myaccount');
 var additems = require('./routes/additems');
 
 var app = express();
+var social = require('./passport/passport')(app, passport);
 
 // Read in keys and secrets. Using nconf use can set secrets via
 // environment variables, command-line arguments, or a keys.json file.
