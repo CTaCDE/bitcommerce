@@ -3,6 +3,9 @@ function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
 
+    var accountButton = document.getElementById("account-button");
+    var facebookButton = document.getElementById("facebook-button");
+
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -10,8 +13,13 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
         console.log("Connected!");
+        accountButton.style.display = "block";
+        facebookButton.style.display = "none";
+
     } else {
         console.log("Not connected!");
+        facebookButton.style.display = "block";
+        accountButton.style.display = "none";
     }
 }
 
