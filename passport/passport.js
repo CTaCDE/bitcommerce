@@ -3,19 +3,18 @@ var User = require('../models/users');
 var session = require('express-session');
 
 module.exports = function(app, passport) {
-
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true, cookie: { secure: true } }));
 
     passport.serializeUser(function(user, done) {
-      done(null, user.id);
+        done(null, user.id);
     });
 
     passport.deserializeUser(function(id, done) {
-      User.findById(id, function(err, user) {
-        done(err, user);
-      });
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
     });
 
     passport.use(new FacebookStrategy({
@@ -23,38 +22,39 @@ module.exports = function(app, passport) {
         clientSecret: 'd34fb30aa553faf7c2238bcaaa44ed6d',
         callbackURL: "https://www.193tees.com/auth/facebook/callback",
         profileFields: ['id', 'displayName', 'photos', 'email']
-      },
-      function(accessToken, refreshToken, profile, done) {
-        console.log(profile);
+        },
 
-        // Create a new user
-        var me = new User({
-            name: profile.displayName,
-            userID: profile.id,
-            email: profile.emails[0].value,
-            orders: [],
-            address: []
-        });
+        function(accessToken, refreshToken, profile, done) {
+            console.log(profile);
 
-        /* save if new */
-        User.findOne({email:me.email}, function(err, u) {
-            if(!u) {
-                me.save(function(err, me) {
-                    if(err) return done(err);
-                    done(null,me);
-                });
-            } else {
-                console.log(u);
-                done(null, u);
-            }
-        });
+            // Create a new user
+            var me = new User({
+                name: profile.displayName,
+                userID: profile.id,
+                email: profile.emails[0].value,
+                orders: [],
+                address: []
+            });
 
-        // User.findOrCreate(..., function(err, user) {
-        //   if (err) { return done(err); }
-        //   done(null, user);
-        // });
-        done(null, profile);
-      }
+            /* save if new */
+            User.findOne({email:me.email}, function(err, u) {
+                if(!u) {
+                    me.save(function(err, me) {
+                        if(err) return done(err);
+                        done(null,me);
+                    });
+                } else {
+                    console.log(u);
+                    done(null, u);
+                }
+            });
+
+            // User.findOrCreate(..., function(err, user) {
+            //   if (err) { return done(err); }
+            //   done(null, user);
+            // });
+            done(null, profile);
+        }
     ));
 
     app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/artists' }));
@@ -63,5 +63,4 @@ module.exports = function(app, passport) {
 
     return passport;
 }
-
 
