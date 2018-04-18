@@ -85,7 +85,7 @@ html
 
                         // a(href="/auth/facebook" target="_blank" onclick='checkLoginState()') Facebook login
 
-                        fb:login-button#facebook-button.navbar-right(scope='public_profile,email', onlogin='checkLoginState();' style="margin-left: 1vw; margin-top: 1vw; display: block")
+                        fb:login-button#facebook-button.navbar-right(scope='public_profile,email', onload='checkLoginState();' style="margin-left: 1vw; margin-top: 1vw; display: block")
 
                         form.search.collapse.navbar-collapse.navbar-right(style='border-top-width:7px; font-size:18px; border-color: #black; margin-top:0.5vw')
                             input(
