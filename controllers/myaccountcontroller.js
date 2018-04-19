@@ -9,6 +9,7 @@ exports.myaccount_list = function(req, res) {
         },
         myaccount_objects: function(callback) {
             Myaccount.find(callback);
+            console.log(callback);
         }
     }, function(err, results) {
         console.log(results);

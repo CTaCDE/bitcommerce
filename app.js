@@ -20,6 +20,7 @@ var terms = require('./routes/terms');
 var privacypolicy = require('./routes/privacypolicy');
 var myaccount = require('./routes/myaccount');
 var additems = require('./routes/additems');
+var submitdesign = require('./routes/submitdesign');
 
 var app = express();
 var social = require('./passport/passport')(app, passport);
@@ -68,6 +69,7 @@ app.use('/terms',terms);
 app.use('/privacypolicy', privacypolicy);
 app.use('/myaccount', myaccount);
 app.use('/additems', additems);
+app.use('/submitdesign', submitdesign);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
