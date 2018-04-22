@@ -48,6 +48,10 @@ exports.tshirts_detail = function(req, res) {
 exports.about = function(req, res) {
     res.render('about', {title: 'About Us'});
 }
+// Display the about page
+exports.submitdesign = function(req, res) {
+    res.render('submitdesign', {title: 'submitdesign'});
+}
 
 // Display the order confimation page
 exports.confirmation = function(req, res){
