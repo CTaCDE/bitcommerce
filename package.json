@@ -71,6 +71,7 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "pug": "^2.0.0-rc.4",
+    "request": "^2.85.0",
     "serve-favicon": "^2.4.5",
     "supertest": "^3.0.0"
   },
