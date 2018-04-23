@@ -33,6 +33,17 @@ function checkLoginState() {
     });
 }
 
+function fbLogout() {
+    console.log("fbLogout called!");
+    FB.logout(function (response) {
+        // Do what ever you want here when logged out like reloading the page, redirect to index
+        // window.location.reload();
+
+        // Redirect user to index
+        window.location.href = "/";
+    });
+}
+
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '2054747968144280',

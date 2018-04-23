@@ -18,7 +18,10 @@ block content
                 a(href='/logs') Dashboard (admin)
                 a(href='/additems') Add Sale Item (admin)
                 a(href='/submitdesign') Submit a Design
-                a(href='#') Sign Out
+                a(href='#') Logout
+                    span#fbLogout(onclick='fbLogout()')
+
+
             .main
                 h1(style='text-align: center;') My Orders
                 hr
