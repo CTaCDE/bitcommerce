@@ -1,5 +1,6 @@
 var Tshirts = require('../models/tshirts.js');
 var async = require('async');
+var ipn = require('../passport/ipnhandler');
 
 exports.index = function(req, res) {
     //res.send("NOT IMPLEMENTED: Site Home Page");
@@ -66,4 +67,9 @@ exports.terms = function(req, res) {
 // Display the privacy policy page
 exports.privacypolicy = function(req, res) {
     res.render('privacypolicy', {title: 'Privacy Policy'});
+}
+
+// handle paypal ipn posts
+exports.paypalipn = function(req, res) {
+    ipn.ipnHandler(req,res);
 }

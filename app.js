@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nconf = require('nconf');
 var passport = require('passport');
+//var events = require('events');
 
 // Define all of the routes
 var index = require('./routes/index');
@@ -21,6 +22,7 @@ var privacypolicy = require('./routes/privacypolicy');
 var additems = require('./routes/additems');
 var submitdesign = require('./routes/submitdesign');
 var orderhistory = require('./routes/orderhistory');
+var paypalipn = require('./routes/paypalipn');
 
 var app = express();
 var social = require('./passport/passport')(app, passport);
@@ -70,6 +72,7 @@ app.use('/privacypolicy', privacypolicy);
 app.use('/additems', additems);
 app.use('/submitdesign', submitdesign);
 app.use('/orderhistory', orderhistory);
+app.use('/paypalipn', paypalipn);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -88,5 +91,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// paypal ipn listener
+//var eventEmitter = new events.EventEmitter();
+
+//eventEmitter.on('paypalipn', function(){
+//  console.log('ipn detected');
+//});
+
 
 module.exports = app;
