@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var localdev = 0;
+
 /**
  * Module dependencies.
  */
@@ -7,6 +9,7 @@
 var app = require('../app');
 var debug = require('debug')('bitcommerce:server');
 var https = require('https');
+var http = require('http');
 var fs = require('fs');
 var path = require('path');
 
@@ -25,7 +28,13 @@ app.set('port', port);
   key: fs.readFileSync(path.join(__dirname,'ssl','server.key'))
  }
 
-var server = https.createServer(httpsOptions, app);
+
+if(localdev == 1) {
+  var server = https.createServer(httpsOptions, app);  
+} else {
+  var server = http.createServer(app);
+}
+
 
 /**
  * Listen on provided port, on all network interfaces.
