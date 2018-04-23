@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nconf = require('nconf');
 var passport = require('passport');
+const fileUpload = require('express-fileupload');
+
 
 // Define all of the routes
 var index = require('./routes/index');
@@ -21,6 +23,7 @@ var privacypolicy = require('./routes/privacypolicy');
 var additems = require('./routes/additems');
 var submitdesign = require('./routes/submitdesign');
 var orderhistory = require('./routes/orderhistory');
+var upload = require('./routes/upload');
 
 var app = express();
 var social = require('./passport/passport')(app, passport);
@@ -70,6 +73,8 @@ app.use('/privacypolicy', privacypolicy);
 app.use('/additems', additems);
 app.use('/submitdesign', submitdesign);
 app.use('/orderhistory', orderhistory);
+app.use('/upload', upload);
+app.use(fileUpload());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -88,5 +93,24 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+app.post('/upload', function(req, res) {
+  console.log(req.files.fileToUpload); // the uploaded file object
+  if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+ 
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.fileToUpload;
+ 
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv('/home/rosyposeee/Desktop/upload/data.csv', function(err) {
+    if (err)
+      return res.status(500).send(err);
+ 
+    res.send('File uploaded!');
+  });
+});
+
 
 module.exports = app;

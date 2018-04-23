@@ -67,3 +67,8 @@ exports.terms = function(req, res) {
 exports.privacypolicy = function(req, res) {
     res.render('privacypolicy', {title: 'Privacy Policy'});
 }
+
+// Display the upload page
+exports.upload = function(req, res) {
+    res.render('upload', {title: 'Upload'});
+}
