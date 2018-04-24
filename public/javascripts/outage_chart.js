@@ -182,10 +182,12 @@ function loadChart(objects) {
             })
             .attr("y","1em")
             .text(function(d,i){
-                if (i<colours.length-1){
-                    return "up to "+breaks[i];
-                }   else    {
-                    return "over "+breaks[i-1];
+                if (i == 0) {
+                    return "0 to "+breaks[i]+" hrs";
+                } else if (i<colours.length-1) {
+                    return breaks[i-1]+" to "+breaks[i]+" hrs";
+                } else {
+                    return "over "+breaks[i-1]+" hrs";
                 }
             });
 
