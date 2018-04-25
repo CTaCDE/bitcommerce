@@ -33,22 +33,28 @@ block content
                                 button.close(type='button', data-dismiss='modal') ×
                                 h4.modal-title Submit Your Own Design
                             .modal-body(style='font-size:13px')
-                                form.form-horizontal(action='/action_page.php')
+                                form#gform.form-horizontal(method='POST', action='https://script.google.com/macros/s/AKfycbzkb_qWb5llnapz4rIIJow_L_3YaitdNSJE1OxWhxFKE0gAIqY/exec')
                                     .form-group
-                                        label.control-label.col-sm-2(for='email') Name of your Design:
+                                        label.control-label.col-sm-2(for='design') Name of your Design:
                                         .col-sm-10
-                                            input#email.form-control(type='email', placeholder='Enter name', name='id')
+                                            input#design.form-control(type='text', placeholder='Enter name', name='design_name')
                                     .form-group
-                                        label.control-label.col-sm-2(for='pwd') Link to Bio:
+                                        label.control-label.col-sm-2(for='bio') Link to Bio:
                                         .col-sm-10
-                                            input#pwd.form-control(type='password', placeholder='Enter link to bio (google doc)', name='name')
+                                            input#bio.form-control(type='text', placeholder='Enter link to bio (google doc)', name='bio_link')
                                     .form-group
-                                        label.control-label.col-sm-2(for='pwd') File:
+                                        label.control-label.col-sm-2(for='file') File:
                                         .col-sm-10
-                                            input#pwd.form-control(type='password', placeholder='Upload file', name='desc')
+                                            input#pwd.form-control(type='text', placeholder='Upload file', name='file')
+                                    
                                     .form-group
                                         .col-sm-offset-2.col-sm-10
-                                            button.btn.btn-default(type='submit') Submit
+                                            button.btn.btn-default(type='submit', onClick="function showty(){var tm = document.getElementById('thankyou');tm.style.display = 'block';}showty();return true;") Submit
+
+                                    div
+                                        p#thankyou(style='display: none') Thank you for your submission!
+
+                script(data-cfasync='false', src='https://cdn.rawgit.com/dwyl/learn-to-send-email-via-google-script-html-no-server/master/form-submission-handler.js', type='text/javascript')
     p
         | We are a group of 4 Computer Science students developing an e-commerce website for our Senior Design Project. Our website is a platform for art and design students to showcase their talent and creativity, so we are looking for students to submit their designs! We are selling T-shirts with designs from UC Davis students to support the art community. For each shirt sold ($10), the designer/artist will get $1 (about 25% of the earnings after tshirt fees, paypal fees, etc.). We also promote the artist/designer on our page by sharing an About Me” of them and linking their portfolio. Please email your design (png file) following these specifications to 193tees@gmail.com.
         br
