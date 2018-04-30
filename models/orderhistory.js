@@ -12,4 +12,4 @@ var OrderhistorySchema = new Schema({
     size_list:  	{type: Array}
 });
 
-module.exports = mongoose.model('orderhistory', OrderhistorySchema);
+module.exports = mongoose.model('orderhistorys', OrderhistorySchema);

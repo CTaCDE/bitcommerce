@@ -92,12 +92,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// paypal ipn listener
-//var eventEmitter = new events.EventEmitter();
-
-//eventEmitter.on('paypalipn', function(){
-//  console.log('ipn detected');
-//});
-
 
 module.exports = app;
