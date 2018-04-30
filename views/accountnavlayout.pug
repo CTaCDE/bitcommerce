@@ -3,6 +3,7 @@ extends layout.pug
 
 block scripts
     link(href='stylesheets/myaccount.css', rel='stylesheet', type='text/css')
+    script(src="/javascripts/logout.js")
     block subscripts
 
 block content
@@ -20,9 +21,9 @@ block content
                         li
                             a(href='/submitdesign') Submit a Design
                         li
-                            a(href='#') Logout
-                                span#fbLogout(onclick='fbLogout()')
-    hr
+                            a( target='_top')
+                                span#fbLogout(onclick='facebookLogout()') Logout
+        hr
             
 
     block subcontent
