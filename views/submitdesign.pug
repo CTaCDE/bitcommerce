@@ -3,7 +3,6 @@ extends layout.pug
 block scripts
     link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
     link(href='stylesheets/myaccount.css', rel='stylesheet', type='text/css')
-    link(href='stylesheets/style.css', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
@@ -20,6 +19,11 @@ block content
             .main
                 h1(style='text-align: center;') Submit a Design
                 hr
+                // Trigger the modal with a button
+                button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal' style="font-family: 'Playfair Display', serif") 
+                    Upload Design
+                br
+                br
                 // Modal
                 #myModal.modal.fade(role='dialog')
                     .modal-dialog
@@ -29,45 +33,42 @@ block content
                                 button.close(type='button', data-dismiss='modal') ×
                                 h4.modal-title Submit Your Own Design
                             .modal-body(style='font-size:13px')
-                                form.form-horizontal(method='post' action='upload' enctype='multipart/form-data')
+                                form#gform.form-horizontal(method='POST', action='https://script.google.com/macros/s/AKfycbzkb_qWb5llnapz4rIIJow_L_3YaitdNSJE1OxWhxFKE0gAIqY/exec')
                                     .form-group
-                                        label.control-label.col-sm-2(for='name') Name of your Design:
+                                        label.control-label.col-sm-2(for='design') Name of your Design:
                                         .col-sm-10
-                                            input.form-control(type='name', placeholder='Enter name', name='Name')
+                                            input#design.form-control(type='text', placeholder='Enter name', name='design_name')
                                     .form-group
-                                        label.control-label.col-sm-2(for='link') Link to Bio:
+                                        label.control-label.col-sm-2(for='bio') Link to Bio:
                                         .col-sm-10
-                                            input.form-control(type='link', placeholder='Enter link to bio (google doc)', name='Link')
+                                            input#bio.form-control(type='text', placeholder='Enter link to bio (google doc)', name='bio_link')
                                     .form-group
-                                        label.control-label.col-sm-2(for='fileupload') File:
+                                        label.control-label.col-sm-2(for='file') File:
                                         .col-sm-10
-                                            input.form-control(type='file', name='fileToUpload')
-                                    br
+                                            input#pwd.form-control(type='text', placeholder='Upload file', name='file')
+                                    
                                     .form-group
                                         .col-sm-offset-2.col-sm-10
-                                            button.btn.btn-default(type='submit' value='Upload!') Submit
+                                            button.btn.btn-default(type='submit', onClick="function showty(){var tm = document.getElementById('thankyou');tm.style.display = 'block';}showty();return true;") Submit
 
-                h3(style='text-align: center;') Submission Guidelines
-                // Trigger the modal with a button
-                button.btn.btn-lg(type='button', data-toggle='modal', data-target='#myModal' style='font-family: "Playfair Display", serif') Upload Design!
+                                    div
+                                        p#thankyou(style='display: none') Thank you for your submission!
 
-                p(style='font-size:14px; text-align:center')
-                    | We are a group of 4 Computer Science students developing an e-commerce website for our Senior Design Project. Our website is a platform for art and design students to showcase their talent and creativity, so we are looking for students to submit their designs! We are selling T-shirts with designs from UC Davis students to support the art community. For each shirt sold ($10), the designer/artist will get $1 (about 25% of the earnings after tshirt fees, paypal fees, etc.). We also promote the artist/designer on our page by sharing an About Me” of them and linking their portfolio. Please email your design (png file) following these specifications to 193tees@gmail.com.
-                    br
-                    br
-                    | Tell us where on the T-shirt you would like your design to be printed. Files should be set up to sizes not to exceed (to approximate size in inches divide pixels at each dimension by 300):
-                    br
-                    br
-                    | a) Full front or back, 14 x 16 @ 300dpi (4200 x 4800 pixels).
-                    br
-                    br
-                    | b) Left or right chest, 4 x 4 though 1 x 4 is recommended (300 x 1200)
-                    br
-                    br
-                    | The design can be anything of your choice that you think people will love or our current theme: Spring!
-                    br
-                    | Note: We do not remove any backgrounds, please do so before submitting!
-                    br
-                    | Email us if you have any questions!
-
-                
+                script(data-cfasync='false', src='https://cdn.rawgit.com/dwyl/learn-to-send-email-via-google-script-html-no-server/master/form-submission-handler.js', type='text/javascript')
+    p
+        | We are a group of 4 Computer Science students developing an e-commerce website for our Senior Design Project. Our website is a platform for art and design students to showcase their talent and creativity, so we are looking for students to submit their designs! We are selling T-shirts with designs from UC Davis students to support the art community. For each shirt sold ($10), the designer/artist will get $1 (about 25% of the earnings after tshirt fees, paypal fees, etc.). We also promote the artist/designer on our page by sharing an About Me” of them and linking their portfolio. Please email your design (png file) following these specifications to 193tees@gmail.com.
+        br
+        br
+        | Tell us where on the T-shirt you would like your design to be printed. Files should be set up to sizes not to exceed (to approximate size in inches divide pixels at each dimension by 300):
+        br
+        br
+        | a) Full front or back, 14 x 16 @ 300dpi (4200 x 4800 pixels).
+        br
+        br
+        | b) Left or right chest, 4 x 4 though 1 x 4 is recommended (300 x 1200)
+        br
+        br
+        | The design can be anything of your choice that you think people will love or our current theme: Spring!
+        br
+        br
+        | Email us if you have any questions!

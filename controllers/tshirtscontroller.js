@@ -1,5 +1,6 @@
 var Tshirts = require('../models/tshirts.js');
 var async = require('async');
+var ipn = require('../passport/ipnhandler');
 
 exports.index = function(req, res) {
     //res.send("NOT IMPLEMENTED: Site Home Page");
@@ -8,7 +9,7 @@ exports.index = function(req, res) {
             Tshirts.count(callback);
         },
         tshirts_objects: function(callback) {
-            Tshirts.find(callback);
+            Tshirts.find(callback).sort( { sold:-1, price:-1 } );
         }
     }, function(err, results) {
         res.render('index', {title: '193Tees', error: err, data: results});
@@ -68,7 +69,7 @@ exports.privacypolicy = function(req, res) {
     res.render('privacypolicy', {title: 'Privacy Policy'});
 }
 
-// Display the upload page
-exports.upload = function(req, res) {
-    res.render('upload', {title: 'Upload'});
+// handle paypal ipn posts
+exports.paypalipn = function(req, res) {
+    ipn.ipnHandler(req,res);
 }
