@@ -48,8 +48,9 @@ block subcontent
             table
                 tr
                     th Shirt Name
-                    th Shirt Quantity
-                tr
-                    td data
-                    td data
+                    th Shirt Quantity(S,M,L)
+                each val in data.tshirts_objects
+                    tr
+                        td= val.name
+                        td= val.stock
             br
