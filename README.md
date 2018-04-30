@@ -1,4 +1,4 @@
-# bitcommerce: Artist promotion platform and e-commerce website
+# 193Tees: Artist promotion platform and e-commerce website
 Developed by UC Davis students for ECS 193: Senior Design Project. 
 
 
@@ -12,11 +12,36 @@ You will need the latest version of the [MEAN stack](http://mean.io/) and [Googl
 
 ### Installing
 
-Add notes of how to install.
+To install, you will need to clone the latest copy of the repo, install node dependences, and set up developer accounts with the external API's.
+```
+git clone https://github.com/CTaCDE/bitcommerce.git
+npm install
+```
+
+You will need to make an account at [mLab](https://mlab.com/) and create a keys.json file with the following fields:
+```
+{
+  "mongoHost": "<dsname>.mlab.com",
+  "mongoPort": "<port>",
+  "mongoDatabase": "<databaseName>",
+  "mongoUser": "<mlabusername>",
+  "mongoPass": "<mlabpassword>"
+}
+```
+**Be 110% certain this file is in the .gitignore!! This file grants authorization to read and modify your database!!**
+
+See the following links to setup developer accounts:
+[Google App Engine](https://cloud.google.com/appengine/)
+[Facebook](https://developers.facebook.com/)
+[Paypal](https://developer.paypal.com/)
 
 ## Deployment
 
-Add notes of how to deploy
+To deploy, pull the latest changes from master and deploy to app engine. The ```--stop-previous-version``` flag ensures that only the latest instance will run to reduce compute hours charged.
+```
+git pull origin master
+gcloud app deploy --stop-previous-version
+```
 
 ## Built With
 
@@ -39,6 +64,6 @@ We use [Github Tags](http://github.com/) for versioning. For the versions availa
 
 ## Acknowledgments
 
-* ack1
-* ack2
-* ack3
+* Travis Heppe (Client & Software Engineer @ Google)
+* Xin Liu (Professor for ECS 193A/B)
+* Albara Ramli (TA for ECS 193A/B)
