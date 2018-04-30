@@ -223,13 +223,17 @@ html
                         .col-md-2.myac
                             h4 MY ACCOUNT
                             //li
-                            //    a(href='#') Register
                             li
-                                a(href='/orderhistory') My Account
-                            //li
-                            //    a(href='#') Order History
-                            //li
-                            //    a(href='#') Payment
+                                a(href='/orderhistory') My Orders
+                            li
+                                a(href='/logs') Dashboard (admin)
+                            li
+                                a(href='/additems') Add Sale Item (admin)
+                            li
+                                a(href='/submitdesign') Submit a Design
+                            li
+                                a(href='#') Logout
+                                    span#fbLogout(onclick='fbLogout()')
                         .col-md-5.our-st
                             .our-left
                                 h4 OUR STORES

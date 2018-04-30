@@ -6,12 +6,23 @@ block scripts
     block subscripts
 
 block content
-    .container
-        .sidenav
-            a(href='/orderhistory') My Orders
-            a(href='/logs') Dashboard (admin)
-            a(href='/additems') Add Sale Item (admin)
-            a(href='/submitdesign') Submit a Design
-            a(href='#') Logout
-                span#fbLogout(onclick='fbLogout()')
+    .container(style="margin-left:10%")
+        .navbar.navbar-fixed
+            .container-fluid
+                .navbar-header
+                    .nav.navbar-nav.collapse.navbar-collapse(style="font-family: 'Playfair Display', serif; font-size: 20px")
+                        li
+                            a(href='/orderhistory') My Orders
+                        li
+                            a(href='/logs') Dashboard (admin)
+                        li
+                            a(href='/additems') Add Sale Item (admin)
+                        li
+                            a(href='/submitdesign') Submit a Design
+                        li
+                            a(href='#') Logout
+                                span#fbLogout(onclick='fbLogout()')
+        hr
+            
+
     block subcontent
