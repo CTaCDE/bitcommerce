@@ -1,0 +1,17 @@
+extends layout.pug
+
+
+block scripts
+    link(href='stylesheets/myaccount.css', rel='stylesheet', type='text/css')
+    block subscripts
+
+block content
+    .container
+        .sidenav
+            a(href='/orderhistory') My Orders
+            a(href='/logs') Dashboard (admin)
+            a(href='/additems') Add Sale Item (admin)
+            a(href='/submitdesign') Submit a Design
+            a(href='#') Logout
+                span#fbLogout(onclick='fbLogout()')
+    block subcontent
