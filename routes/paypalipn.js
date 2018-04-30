@@ -5,6 +5,6 @@ var router = express.Router();
 var tshirts_controller = require('../controllers/tshirtscontroller.js');
 
 // redirect a details request with no item id to index
-router.get('/', tshirts_controller.paypalipn);
+router.post('/', tshirts_controller.paypalipn);
 
 module.exports = router;

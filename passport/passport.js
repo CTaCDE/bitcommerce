@@ -33,7 +33,8 @@ module.exports = function(app, passport) {
                 userID: profile.id,
                 email: profile.emails[0].value,
                 orders: [],
-                address: []
+                address: [],
+                role: "user"
             });
 
             /* save if new */

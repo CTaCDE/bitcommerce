@@ -11,7 +11,8 @@ var UsersSchema = new Schema({
     userID:         {type: Number},
     email:          {type: String},
     orders:         {type: Array},
-    address:        {type: Array}
+    address:        {type: Array},
+    role:  			{type: String}
 });
 
 module.exports = mongoose.model('users', UsersSchema);
