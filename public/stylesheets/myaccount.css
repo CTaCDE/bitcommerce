@@ -2,14 +2,15 @@ body {
     font-family: "Lato", sans-serif;
 }
 .container {
-    padding: 35px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 .sidenav {
     max-width: 28%;
     position: absolute;
     z-index: 1;
     top: 25%;
-    left: 110px;
+    left: 0px;
     background: #eee;
     overflow-x: hidden;
     padding: 5px;
@@ -23,7 +24,7 @@ body {
     font-family: 'Playfair Display', serif;
 }
 .sidenav a:hover {
-    color: #064579;
+    color: white;
 }
 .main {
     margin-left: ; /* Same width as the sidebar + left position in px */
