@@ -1,11 +1,11 @@
-extends layout.pug
+extends accountnavlayout.pug
 
-block scripts
+block subscripts
     link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js', charset='utf-8')
     script(src='javascripts/outage_chart.js')
 
-block content
+block subcontent
     br
     h1(style='text-align:center') Prober Dashboard
     hr

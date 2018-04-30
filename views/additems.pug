@@ -1,63 +1,55 @@
-extends layout.pug
+extends accountnavlayout.pug
 
-block scripts
+block subscripts
     link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
-    link(href='stylesheets/myaccount.css', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 
-block content
-    body
-        .container
-            .sidenav
-                a(href='/myaccount') My Orders
-                a(href='/logs') Dashboard (admin)
-                a(href='/additems') Add Sale Item (admin)
-                a(href='/submitdesign') Submit Design
-                a(href='#') Sign Out
-            .main
-                h1(style='text-align: center;') Add Sale Items
-                hr
-                // Trigger the modal with a button
-                button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal' style="font-family: 'Playfair Display', serif") 
-                    span.glyphicon.glyphicon-plus
-                br
-                br
-                // Modal
-                #myModal.modal.fade(role='dialog')
-                    .modal-dialog
-                        // Modal content
-                        .modal-content
-                            .modal-header
-                                button.close(type='button', data-dismiss='modal') ×
-                                h4.modal-title Add Items to Database
-                            .modal-body(style='font-size:13px')
-                                form.form-horizontal(action='/action_page.php')
-                                    .form-group
-                                        label.control-label.col-sm-2(for='email') Item ID:
-                                        .col-sm-10
-                                            input#email.form-control(type='email', placeholder='Enter id number', name='id')
-                                    .form-group
-                                        label.control-label.col-sm-2(for='pwd') Item Name:
-                                        .col-sm-10
-                                            input#pwd.form-control(type='password', placeholder='Enter name', name='name')
-                                    .form-group
-                                        label.control-label.col-sm-2(for='pwd') Item Description:
-                                        .col-sm-10
-                                            input#pwd.form-control(type='password', placeholder='Enter description', name='desc')
-                                    .form-group
-                                        label.control-label.col-sm-2(for='pwd') Item Price:
-                                        .col-sm-10
-                                            input#pwd.form-control(type='password', placeholder='Enter price in dollars', name='price')
-                                    .form-group
-                                        .col-sm-offset-2.col-sm-10
-                                            button.btn.btn-default(type='submit') Submit
-                table
-                    tr
-                        th Shirt Name
-                        th Shirt Quantity
-                    tr
-                        td data
-                        td data
-                br
+block subcontent
+    .container
+        .main
+            h1(style='text-align: center;') Add Sale Items
+            hr
+            // Trigger the modal with a button
+            button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal' style="font-family: 'Playfair Display', serif") 
+                span.glyphicon.glyphicon-plus
+            br
+            br
+            // Modal
+            #myModal.modal.fade(role='dialog')
+                .modal-dialog
+                    // Modal content
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal') ×
+                            h4.modal-title Add Items to Database
+                        .modal-body(style='font-size:13px')
+                            form.form-horizontal(action='/action_page.php')
+                                .form-group
+                                    label.control-label.col-sm-2(for='email') Item ID:
+                                    .col-sm-10
+                                        input#email.form-control(type='email', placeholder='Enter id number', name='id')
+                                .form-group
+                                    label.control-label.col-sm-2(for='pwd') Item Name:
+                                    .col-sm-10
+                                        input#pwd.form-control(type='password', placeholder='Enter name', name='name')
+                                .form-group
+                                    label.control-label.col-sm-2(for='pwd') Item Description:
+                                    .col-sm-10
+                                        input#pwd.form-control(type='password', placeholder='Enter description', name='desc')
+                                .form-group
+                                    label.control-label.col-sm-2(for='pwd') Item Price:
+                                    .col-sm-10
+                                        input#pwd.form-control(type='password', placeholder='Enter price in dollars', name='price')
+                                .form-group
+                                    .col-sm-offset-2.col-sm-10
+                                        button.btn.btn-default(type='submit') Submit
+            table
+                tr
+                    th Shirt Name
+                    th Shirt Quantity
+                tr
+                    td data
+                    td data
+            br

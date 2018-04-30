@@ -1,40 +1,22 @@
-extends layout.pug
+extends accountnavlayout.pug
 
-block scripts
+block subscripts
     link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
-    link(href='stylesheets/myaccount.css', rel='stylesheet', type='text/css')
 
-block content
-    body
-        
-        script.
-            var objects = !{JSON.stringify(data)};
-            console.log(objects);
-                
-
-        .container
-            .sidenav
-                a(href='/orderhistory') My Orders
-                a(href='/logs') Dashboard (admin)
-                a(href='/additems') Add Sale Item (admin)
-                a(href='/submitdesign') Submit a Design
-                a(href='#') Logout
-                    span#fbLogout(onclick='fbLogout()')
-
-
-            .main
-                h1(style='text-align: center;') My Orders
-                hr
-                table
-                    tr
-                        th Order ID
-                        th Order Date
-                        th Quantities
-                        th Item IDs
-                    each val in data.orderhistory_objects
-                        tr
-                            td= val.orderid
-                            td= val.order_date
-                            td= val.quantity_list
-                            td= val.item_id_list
-                br
+block subcontent       
+    .main
+        h1(style='text-align: center;') My Orders
+        hr
+        table
+            tr
+                th Order ID
+                th Order Date
+                th Quantities
+                th Item IDs
+            each val in data.orderhistory_objects
+                tr
+                    td= val.orderid
+                    td= val.order_date
+                    td= val.quantity_list
+                    td= val.item_id_list
+        br
