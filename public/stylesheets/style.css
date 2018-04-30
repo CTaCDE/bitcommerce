@@ -55,9 +55,9 @@ body a{
   
 .content{
 	overflow: hidden;
-  height: 5.6em;
-  line-height: 1.2em;
-  width: 200px;
+  	height: 5.6em;
+  	line-height: 1.2em;
+  	max-width: 200px;
 }
 .img-responsive{
 	padding-top:30px;

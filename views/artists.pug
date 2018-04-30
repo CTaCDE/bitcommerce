@@ -15,20 +15,19 @@ block content
                             .special-info.grid_1.simpleCart_shelfItem
                                 h4(style='text-align:center')= val.name
                                 .item_add
-                                    span.item_price
-                                        .content
-                                            p #{val.bio}
-                                        //--------------
-                                        br
-                                        script.
-                                          document.querySelector('button').addEventListener('click', function() {
-                                          document.querySelector('#content').style.height= 'auto';
-                                          this.style.display= 'none';
-                                          });
-                                        #read  
-                                            a(href='artists/' + val.artistid) Read more
-                                        br
-                                        br
-                                        //--------------
-                                        a(href=val.portfoliolink) Portfolio
+                                    .content
+                                        p #{val.bio}
+                                    //--------------
+                                    br
+                                    script.
+                                      document.querySelector('button').addEventListener('click', function() {
+                                      document.querySelector('#content').style.height= 'auto';
+                                      this.style.display= 'none';
+                                      });
+                                    #read  
+                                        a(href='artists/' + val.artistid) Read more
+                                    br
+                                    br
+                                    //--------------
+                                    a(href=val.portfoliolink) Portfolio
                                 center
