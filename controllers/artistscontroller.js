@@ -8,7 +8,7 @@ exports.artists_list = function(req, res) {
             Artists.count(callback);
         },
         artists_objects: function(callback) {
-            Artists.find(callback);
+            Artists.find(callback).sort( { artistid:-1 } );
         }
     }, function(err, results) {
         res.render('artists', {title: '193Tees Artists', error: err, data: results});

@@ -15,13 +15,14 @@ exports.index = function(req, res) {
         res.render('index', {title: '193Tees', error: err, data: results});
     });
 };
+
 exports.additems = function(req, res) {
     async.parallel({
         tshirts_count: function(callback) {
             Tshirts.count(callback);
         },
         tshirts_objects: function(callback) {
-            Tshirts.find(callback);
+            Tshirts.find(callback).sort( { itemid:-1 } );
         }
     }, function(err, results) {
         res.render('additems', {title: '193Tees', error: err, data: results});

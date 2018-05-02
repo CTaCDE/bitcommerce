@@ -14,7 +14,7 @@ block content
                         .grid.images_3_of_2
                             ul#etalage
                                 li
-                                    a(href='../html/optionallink.html')
+                                    a(href='#')
                                         img.etalage_thumb_image(src='/images/artist' + val.artistid + '.jpg')
                                         img.etalage_source_image(src='/images/artist' + val.artistid + '.jpg', title='')
                             .clearfix
@@ -44,9 +44,6 @@ block content
             thumb_image_height: 400,
             source_image_width: 1200,
             source_image_height: 1200,
-            show_hint: true,
-            click_callback: function(image_anchor, instance_id){
-            alert('Callback example:\\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-            }
+            show_hint: true
             });
             });
