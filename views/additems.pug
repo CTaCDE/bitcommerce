@@ -25,32 +25,62 @@ block subcontent
                             button.close(type='button', data-dismiss='modal') ×
                             h4.modal-title Add Items to Database
                         .modal-body(style='font-size:13px')
-                            form.form-horizontal(action='/action_page.php')
+                            form.form-horizontal(action='/additems/confirmation')
                                 .form-group
-                                    label.control-label.col-sm-2(for='email') Item ID:
+                                    label.control-label.col-sm-2(for='txt') Item ID:
                                     .col-sm-10
-                                        input#email.form-control(type='email', placeholder='Enter id number', name='id')
+                                        input#email.form-control(type='text', placeholder='Enter id number', name='iid')
                                 .form-group
-                                    label.control-label.col-sm-2(for='pwd') Item Name:
+                                    label.control-label.col-sm-2(for='txt') Item Name:
                                     .col-sm-10
-                                        input#pwd.form-control(type='password', placeholder='Enter name', name='name')
+                                        input#email.form-control(type='text', placeholder='Enter name', name='tname')
                                 .form-group
-                                    label.control-label.col-sm-2(for='pwd') Item Description:
+                                    label.control-label.col-sm-2(for='txt') Description:
                                     .col-sm-10
-                                        input#pwd.form-control(type='password', placeholder='Enter description', name='desc')
+                                        input#email.form-control(type='text', placeholder='Enter description', name='desc')
                                 .form-group
-                                    label.control-label.col-sm-2(for='pwd') Item Price:
+                                    label.control-label.col-sm-2(for='txt') Item Color:
                                     .col-sm-10
-                                        input#pwd.form-control(type='password', placeholder='Enter price in dollars', name='price')
+                                        input#email.form-control(type='text', placeholder='Enter color (White, Natural, Grey)', name='col')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Item Price:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter price in dollars (no $ sign)', name='tprice')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Artist:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter artist name', name='aname')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Artist ID:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter artist id', name='aid')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Pic Count:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter number of pictures for item', name='picc')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Paypal ID:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter id for item paypal button', name='pid')
                                 .form-group
                                     .col-sm-offset-2.col-sm-10
                                         button.btn.btn-default(type='submit') Submit
             table
                 tr
+                    th Item id
                     th Shirt Name
-                    th Shirt Quantity(S,M,L)
+                    th Color
+                    th Price ($)
+                    th Stock (S,M,L)
+                    th # Sold
+                    th Artist
                 each val in data.tshirts_objects
                     tr
+                        td= val.itemid
                         td= val.name
+                        td= val.color
+                        td= val.price
                         td= val.stock
+                        td= val.sold
+                        td= val.artistname
             br

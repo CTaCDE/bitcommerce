@@ -16,6 +16,7 @@ exports.index = function(req, res) {
     });
 };
 
+// Display add item page
 exports.additems = function(req, res) {
     async.parallel({
         tshirts_count: function(callback) {
@@ -27,6 +28,36 @@ exports.additems = function(req, res) {
     }, function(err, results) {
         res.render('additems', {title: '193Tees', error: err, data: results});
     });
+};
+
+// Add items to database and display confimation page
+exports.additem_confirmation = function(req, res){
+    var newt = new Tshirts({
+                itemid: req.query.iid,
+                name: req.query.tname,
+                price: req.query.tprice,
+                color: req.query.col,
+                description: req.query.desc,
+                sold: 0,
+                stock: [0,0,0],
+                sizes: ["Small","Medium","Large"],
+                paypal_id: req.query.pid,
+                pic_count: req.query.picc,
+                artistid: req.query.aid,
+                artistname: req.query.aname
+            });
+
+    if(newt.name) {
+        newt.save()
+            .then(item => {
+                res.render('additems_confirmation', {title: 'Add Confirmation'});
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
+            });
+    } else {
+        res.status(400).send("unable to save to database, no name given");
+    }
 };
 
 // Display list of all tshirts

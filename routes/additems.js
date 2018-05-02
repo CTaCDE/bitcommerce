@@ -9,4 +9,6 @@ var tshirts_controller = require('../controllers/tshirtscontroller.js');
 
 router.get('/', tshirts_controller.additems);
 
+router.get('/confirmation', tshirts_controller.additem_confirmation);
+
 module.exports = router;
