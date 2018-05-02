@@ -1,3 +1,29 @@
+
+// Allow the user to login
+function facebookLogin() {
+    console.log("facebookLogin() called!");
+
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            console.log("User is connected.");
+            FB.login(function(response) {
+                if (response.status === 'connected') {
+                    // Logged into your app and Facebook.
+                    console.log("User is logged into app and facebook.");
+                } else {
+                    // The person is not logged into this app or we are unable to tell.
+                    console.log("User is not logged into app or can't tell.");
+                }
+            });
+        } else {
+            // We come here when the user is logged into facebook but not authenticated into the app.
+            console.log("User is not connected.");
+            console.log("Attempting to login again...");
+            FB.login();
+        }
+    });
+}
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
