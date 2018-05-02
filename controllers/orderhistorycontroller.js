@@ -11,7 +11,6 @@ exports.orders_list = function(req, res) {
             Orderhistory.find(callback);
         }
     }, function(err, results) {
-        console.log(results);
         res.render('orderhistory', {title: '193Tees Orders', error: err, data: results});
     });
 };

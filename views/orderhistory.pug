@@ -20,4 +20,9 @@ block subcontent
                     td= val.quantity_list
                     td= val.item_id_list
         br
+        form(target='_new', method='post', action='/paypalipn')
+            input(type='hidden', name='first_name', value='fred')
+            input(type='hidden', name='last_name', value='johnson')
+            input(type='hidden', name='receiver_email', value='193tees@gmail.com')
+            input(type='submit')
 

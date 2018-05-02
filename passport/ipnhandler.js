@@ -4,8 +4,9 @@
 
 const querystring = require("querystring");
 const request = require("request");
-var fs = require('fs');
-var stream = fs.createWriteStream("trans.txt", {flags:'a'});
+var Order = require('../models/orderhistory');
+//var fs = require('fs');
+//var stream = fs.createWriteStream("trans.txt", {flags:'a'});
 
 /**
  * @const {boolean} sandbox Indicates if the sandbox endpoint is used.
@@ -50,7 +51,50 @@ exports.ipnHandler = function ipnHandler(req, res) {
   var verificationBody = `cmd=_notify-validate&${formUrlEncodedBody}`;
 
   // save transaction info to file
-  stream.write(new Date().toISOString() + '\n' + JSON.stringify(ipnTransactionMessage) + '\n');
+  //stream.write(new Date().toISOString() + '\n' + JSON.stringify(ipnTransactionMessage) + '\n');
+  // Create a new user
+  console.log(ipnTransactionMessage);
+  if(ipnTransactionMessage.receiver_email == "193tees@gmail.com") {
+    console.log("valid sender");
+    var ord = new Order({
+      txn_id: ipnTransactionMessage.txn_id,
+      payer_email: ipnTransactionMessage.payer_email,
+      payer_id: ipnTransactionMessage.payer_id,
+      first_name: ipnTransactionMessage.first_name,
+      last_name: ipnTransactionMessage.last_name,
+      address_city: ipnTransactionMessage.address_city,
+      address_state: ipnTransactionMessage.address_state,
+      address_country_code: ipnTransactionMessage.address_country_code,
+      address_name: ipnTransactionMessage.address_name,
+      address_street: ipnTransactionMessage.address_street,
+      address_zip: ipnTransactionMessage.address_zip,
+      payment_gross: ipnTransactionMessage.payment_gross,
+      mc_gross: ipnTransactionMessage.mc_gross,
+      payment_date: ipnTransactionMessage.payment_date,
+      payment_status: ipnTransactionMessage.payment_status,
+
+      item_name1: ipnTransactionMessage.item_name1,
+      item_number1:ipnTransactionMessage.item_number1,
+      quantity1: ipnTransactionMessage.quantity1,
+      option_selection1: ipnTransactionMessage.option_selection1
+    });
+    console.log(ord);
+  }
+
+
+  // /* save if new */
+  // User.findOne({email:me.email}, function(err, u) {
+  //     if(!u) {
+  //         me.save(function(err, me) {
+  //             if(err) return done(err);
+  //             done(null,me);
+  //         });
+  //     } else {
+  //         console.log(u);
+  //         done(null, u);
+  //     }
+  // });
+
 
 
   console.log(`Verifying IPN: ${verificationBody}`);
