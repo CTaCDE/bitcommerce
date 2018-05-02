@@ -8,6 +8,10 @@ function facebookLogout(){
                 console.log("Logged out!");
                 window.location.replace('/');
             });
+        } else {
+            // User is not connected and somehow called facebookLogout()
+            // Refer the user back to homepage
+            window.location.replace('/');
         }
     });
 }
