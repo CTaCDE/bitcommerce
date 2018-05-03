@@ -6,12 +6,14 @@ function facebookLogout(){
         if (response.status === 'connected') {
             FB.logout(function(response) {
                 console.log("Logged out!");
-                window.location.replace('/');
+                return window.location.replace('/');
+                next();
             });
         } else {
             // User is not connected and somehow called facebookLogout()
             // Refer the user back to homepage
-            window.location.replace('/');
+            return window.location.replace('/');
+            next();
         }
     });
 }
