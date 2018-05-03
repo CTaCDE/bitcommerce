@@ -20,8 +20,10 @@ function facebookLogin() {
         } else {
             // We come here when the user is logged into facebook but not authenticated into the app.
             console.log("User is not connected.");
-            console.log("Attempting to login again...");
+            console.log("Attempting to login.");
             FB.login();
+            return window.location.reload();
+            next();
         }
     });
 }
@@ -49,6 +51,8 @@ function statusChangeCallback(response) {
         facebookButton.style.display = "block";
         accountButton.style.display = "none";
     }
+
+    return;
 }
 
 // This function is called when someone finishes with the Login
@@ -58,6 +62,7 @@ function checkLoginState() {
     console.log("checkLoginState called!");
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
+        return;
     });
 }
 
