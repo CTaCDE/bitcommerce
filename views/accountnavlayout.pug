@@ -7,11 +7,11 @@ block scripts
     block subscripts
 
 block content
-    .container(style="margin-left:10%")
+    .container(style="margin-left:28%")
         .navbar.navbar
             .container-fluid
                 .navbar-header
-                    .nav.navbar-nav.collapse.navbar-collapse(style="font-family: 'Playfair Display', serif; font-size: 20px")
+                    .nav.navbar-nav.collapse(style="font-family: 'Playfair Display', serif; font-size: 20px")
                         li
                             a(href='/orderhistory') My Orders
                         //li
@@ -23,7 +23,7 @@ block content
                         li
                             a(target='_top')
                                 span#fbLogout(style='cursor: pointer;', onclick='facebookLogout()') Logout
-        hr
+    hr
             
 
     block subcontent
