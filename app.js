@@ -42,7 +42,6 @@ if (nconf.get('mongoDatabase')) {
     uri = `${uri}/${nconf.get('mongoDatabase')}`;
 }
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://teesme:awfudge23@ds125198.mlab.com:25198/items';
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
