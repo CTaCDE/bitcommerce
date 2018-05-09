@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nconf = require('nconf');
 var passport = require('passport');
-//var events = require('events');
 
 // Define all of the routes
 var index = require('./routes/index');
