@@ -15,5 +15,4 @@
 runtime: nodejs
 env: flex
 service: default
-version: v1
 # [END runtime]
