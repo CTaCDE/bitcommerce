@@ -5,6 +5,7 @@
 const querystring = require("querystring");
 const request = require("request");
 var Order = require('../models/orderhistory');
+var Tshirts = require('../models/tshirts');
 
 /**
  * @const {boolean} sandbox Indicates if the sandbox endpoint is used.
@@ -142,6 +143,13 @@ exports.ipnHandler = function ipnHandler(req, res) {
           ord.save(function(err, ord) {
             if(err) return console.error(err);
           });
+          for(var i = 0; i < r_item_number_list.length; i++) {
+            var shirtid = Number(r_item_number_list[i]);
+            var quant = Number(r_quantity_list[i]);
+            Tshirts.findOneAndUpdate({itemid: shirtid}, {$inc : {'sold' : quant}}, function(err, shirt) {
+              if(err) return console.error(err);
+            });
+          }
         }
 
       } else if (body === "INVALID") {
