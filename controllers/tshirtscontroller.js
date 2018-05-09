@@ -12,7 +12,7 @@ exports.index = function(req, res) {
             Tshirts.count(callback);
         },
         tshirts_objects: function(callback) {
-            Tshirts.find(callback).sort( { sold:-1, price:-1 } );
+            Tshirts.find(callback).sort( { itemid:-1 } );
         }
     }, function(err, results) {
         res.render('index', {title: '193Tees', error: err, data: results});
