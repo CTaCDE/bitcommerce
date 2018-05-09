@@ -133,6 +133,7 @@ html
                                         .col1
                                         .col1
 
+                include partials/flash
                 block content
 
                 // footer
@@ -192,7 +193,7 @@ html
                             h4 MY ACCOUNT
                             //li
                             li
-                                a(href='/orderhistory') My Orders
+                                a(href='/account') My Account
                             //li
                                 //a(href='/logs') Dashboard (admin)
                             //li
@@ -200,8 +201,8 @@ html
                             li
                                 a(href='/submitdesign') Submit a Design
                             li
-                                a(href='#') Logout
-                                    span#fbLogout(onclick='fbLogout()')
+                                if (user)
+                                    a(href='/logout') Logout
                         .col-md-5.our-st
                             .our-left
                                 h4 OUR STORES

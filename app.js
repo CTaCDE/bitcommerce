@@ -41,6 +41,7 @@ dotenv.load({ path: '.env' });
  */
 const userController = require('./controllers/userscontroller');
 const apiController = require('./controllers/api');
+const orderController = require('./controllers/orderhistorycontroller');
 
 /**
  * API keys and Passport configuration.
@@ -160,6 +161,7 @@ app.post('/signup', userController.postSignup);
 //app.get('/contact', contactController.getContact);
 //app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
+app.get('/orderhistory', passportConfig.isAuthenticated, orderController.orders_list);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
@@ -177,7 +179,7 @@ app.use('/terms',terms);
 app.use('/privacypolicy', privacypolicy);
 app.use('/additems', additems);
 app.use('/submitdesign', submitdesign);
-app.use('/orderhistory', orderhistory);
+// app.use('/orderhistory', orderhistory);
 app.use('/paypalipn', paypalipn);
 
 /**
