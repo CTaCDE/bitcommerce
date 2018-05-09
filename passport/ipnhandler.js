@@ -5,13 +5,11 @@
 const querystring = require("querystring");
 const request = require("request");
 var Order = require('../models/orderhistory');
-//var fs = require('fs');
-//var stream = fs.createWriteStream("trans.txt", {flags:'a'});
 
 /**
  * @const {boolean} sandbox Indicates if the sandbox endpoint is used.
  */
-const sandbox = true;
+const sandbox = false;
 
 /** Production Postback URL */
 const PRODUCTION_VERIFY_URI = "https://ipnpb.paypal.com/cgi-bin/webscr";
@@ -50,52 +48,6 @@ exports.ipnHandler = function ipnHandler(req, res) {
   // Build the body of the verification post message by prefixing 'cmd=_notify-validate'.
   var verificationBody = `cmd=_notify-validate&${formUrlEncodedBody}`;
 
-  // save transaction info to file
-  //stream.write(new Date().toISOString() + '\n' + JSON.stringify(ipnTransactionMessage) + '\n');
-  // Create a new user
-  console.log(ipnTransactionMessage);
-  if(ipnTransactionMessage.receiver_email == "193tees@gmail.com") {
-    console.log("valid sender");
-    var ord = new Order({
-      txn_id: ipnTransactionMessage.txn_id,
-      payer_email: ipnTransactionMessage.payer_email,
-      payer_id: ipnTransactionMessage.payer_id,
-      first_name: ipnTransactionMessage.first_name,
-      last_name: ipnTransactionMessage.last_name,
-      address_city: ipnTransactionMessage.address_city,
-      address_state: ipnTransactionMessage.address_state,
-      address_country_code: ipnTransactionMessage.address_country_code,
-      address_name: ipnTransactionMessage.address_name,
-      address_street: ipnTransactionMessage.address_street,
-      address_zip: ipnTransactionMessage.address_zip,
-      payment_gross: ipnTransactionMessage.payment_gross,
-      mc_gross: ipnTransactionMessage.mc_gross,
-      payment_date: ipnTransactionMessage.payment_date,
-      payment_status: ipnTransactionMessage.payment_status,
-
-      item_name1: ipnTransactionMessage.item_name1,
-      item_number1:ipnTransactionMessage.item_number1,
-      quantity1: ipnTransactionMessage.quantity1,
-      option_selection1: ipnTransactionMessage.option_selection1
-    });
-    console.log(ord);
-  }
-
-
-  // /* save if new */
-  // User.findOne({email:me.email}, function(err, u) {
-  //     if(!u) {
-  //         me.save(function(err, me) {
-  //             if(err) return done(err);
-  //             done(null,me);
-  //         });
-  //     } else {
-  //         console.log(u);
-  //         done(null, u);
-  //     }
-  // });
-
-
 
   console.log(`Verifying IPN: ${verificationBody}`);
 
@@ -114,6 +66,84 @@ exports.ipnHandler = function ipnHandler(req, res) {
           `Verified IPN: IPN message for Transaction ID: ${ipnTransactionMessage.txn_id} is verified.`
         );
         // TODO: Implement post verification logic on ipnTransactionMessage
+        // save transaction info to database
+        if(ipnTransactionMessage.receiver_email == "193tees@gmail.com") {
+          console.log("valid sender");
+          var c_item_name_list = [];
+          var c_item_number_list = [];
+          var c_quantity_list = [];
+          var c_size_list = [];
+          var r_item_name_list = [];
+          var r_item_number_list = [];
+          var r_quantity_list = [];
+          var r_size_list = [];
+          for(var key in ipnTransactionMessage) {
+            if(key.substring(0,9) == 'item_name') {
+              c_item_name_list.push([key, ipnTransactionMessage[key]]);
+            }
+            else if(key.substring(0,11) == 'item_number') {
+              c_item_number_list.push([key, ipnTransactionMessage[key]]);
+            }
+            else if(key.substring(0,8) == 'quantity') {
+              c_quantity_list.push([key, ipnTransactionMessage[key]]);
+            }
+            else if(key.substring(0,17) == 'option_selection1') {
+              c_size_list.push([key, ipnTransactionMessage[key]]);
+            }
+          }
+          c_item_name_list.sort();
+          c_item_number_list.sort();
+          c_quantity_list.sort();
+          c_size_list.sort();
+
+          for(var i = 0; i < c_item_name_list.length; i++) {
+            r_item_name_list.push(c_item_name_list[i][1]);
+          }
+          for(var i = 0; i < c_item_number_list.length; i++) {
+            r_item_number_list.push(c_item_number_list[i][1].split("_",1)[0]);
+          }
+          for(var i = 0; i < c_quantity_list.length; i++) {
+            r_quantity_list.push(c_quantity_list[i][1]);
+          }
+          for(var i = 0; i < c_size_list.length; i++) {
+            r_size_list.push(c_size_list[i][1]);
+          }
+          var ord = new Order({
+            txn_id: ipnTransactionMessage.txn_id,
+            ipn_track_id: ipnTransactionMessage.ipn_track_id,
+            verify_sign: ipnTransactionMessage.verify_sign,
+            payment_date: ipnTransactionMessage.payment_date,
+            payment_status: ipnTransactionMessage.payment_status,
+            shipping_method: ipnTransactionMessage.shipping_method,
+            num_cart_items: ipnTransactionMessage.num_cart_items,
+            mc_gross: ipnTransactionMessage.mc_gross,
+            payment_gross: ipnTransactionMessage.payment_gross,
+            mc_fee: ipnTransactionMessage.mc_fee,
+            payment_fee: ipnTransactionMessage.payment_fee,
+            mc_shipping: ipnTransactionMessage.mc_shipping,
+            payer_id: ipnTransactionMessage.payer_id,
+            first_name: ipnTransactionMessage.first_name,
+            last_name: ipnTransactionMessage.last_name,
+            payer_email: ipnTransactionMessage.payer_email,
+            address_name: ipnTransactionMessage.address_name,
+            address_street: ipnTransactionMessage.address_street,
+            address_city: ipnTransactionMessage.address_city,
+            address_state: ipnTransactionMessage.address_state,
+            address_country: ipnTransactionMessage.address_country,
+            address_country_code: ipnTransactionMessage.address_country_code,
+            address_zip: ipnTransactionMessage.address_zip,
+            receiver_email: ipnTransactionMessage.receiver_email,
+            receiver_id: ipnTransactionMessage.receiver_id,
+            item_name_list: r_item_name_list,
+            item_number_list: r_item_number_list,
+            quantity_list: r_quantity_list,
+            size_list: r_size_list
+          });
+          ord.save(function(err, ord) {
+            if(err) return console.error(err);
+          });
+        }
+
       } else if (body === "INVALID") {
         console.error(
           `Invalid IPN: IPN message for Transaction ID: ${ipnTransactionMessage.txn_id} is invalid.`
