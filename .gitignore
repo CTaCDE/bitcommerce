@@ -7,3 +7,4 @@ bin/ssl/*.csr
 bin/ssl/*.srl
 bin/ssl/*.p12
 trans.txt
+.env
