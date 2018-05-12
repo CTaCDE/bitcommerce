@@ -1,6 +1,7 @@
 var Tshirts = require('../models/tshirts.js');
 var async = require('async');
 var ipn = require('../passport/ipnhandler');
+var Artists = require('../models/artists');
 
 exports.index = function(req, res) {
     //res.send("NOT IMPLEMENTED: Site Home Page");
@@ -57,6 +58,12 @@ exports.additem_confirmation = function(req, res){
             });
     } else {
         res.status(400).send("unable to save to database, no name given");
+    }
+
+    if(newt.name && newt.artistid) {
+        Artists.findOneAndUpdate({artistid: newt.artistid}, {$push : {'designs' : newt.itemid}}, function(err, artist) {
+            if(err) return console.error(err);
+        });
     }
 };
 
