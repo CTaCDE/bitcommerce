@@ -42,6 +42,8 @@ dotenv.load({ path: '.env' });
 const userController = require('./controllers/userscontroller');
 const apiController = require('./controllers/api');
 const orderController = require('./controllers/orderhistorycontroller');
+const logs_controller = require('./controllers/logscontroller.js');
+const tshirts_controller = require('./controllers/tshirtscontroller.js');
 
 /**
  * API keys and Passport configuration.
@@ -167,6 +169,9 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
+app.get('/logs', passportConfig.isAuthenticated, logs_controller.logs_list);
+app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.additems);
+
 // Our routes
 app.use('/', index);
 app.use('/users', users);
@@ -174,10 +179,8 @@ app.use('/details', details);
 app.use('/artists', artists);
 app.use('/about', about);
 app.use('/confirmation', confirmation);
-app.use('/logs',logs);
 app.use('/terms',terms);
 app.use('/privacypolicy', privacypolicy);
-app.use('/additems', additems);
 app.use('/submitdesign', submitdesign);
 // app.use('/orderhistory', orderhistory);
 app.use('/paypalipn', paypalipn);

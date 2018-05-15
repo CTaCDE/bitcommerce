@@ -6,27 +6,30 @@ block subscripts
     script(src='javascripts/outage_chart.js')
 
 block subcontent
-    br
-    h1(style='text-align:center') Prober Dashboard
-    hr
-    h3(style='text-align:center') Website Outages
-    #chart
-    table
-        tr
-            th Downtime Start (UTC)
-            th Downtime End (UTC)
-            th Duration (sec)
-            th Contact
-            th Error Code
-        each val in data.logs_objects
+    if(user.role === 'admin')    
+        br
+        h1(style='text-align:center') Prober Dashboard
+        hr
+        h3(style='text-align:center') Website Outages
+        #chart
+        table
             tr
-                td= val.start_timestamp
-                td= val.end_timestamp
-                td= val.duration
-                td= val.contact
-                td= val.error_code
-    br
-    script.
-        var objects = !{JSON.stringify(data.logs_objects)};
-        loadChart(objects);
+                th Downtime Start (UTC)
+                th Downtime End (UTC)
+                th Duration (sec)
+                //th Contact
+                th Error Code
+            each val in data.logs_objects
+                tr
+                    td= val.start_timestamp
+                    td= val.end_timestamp
+                    td= val.duration
+                    //td= val.contact
+                    td= val.error_code
+        br
+        script.
+            var objects = !{JSON.stringify(data.logs_objects)};
+            loadChart(objects);
+    else
+        h1 You are not authorized to view this page.
 

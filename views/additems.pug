@@ -7,80 +7,83 @@ block subscripts
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 
 block subcontent
-    .container
-        .main
-            h1(style='text-align: center;') Add Sale Items
-            hr
-            // Trigger the modal with a button
-            button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal' style="font-family: 'Playfair Display', serif") 
-                span.glyphicon.glyphicon-plus
-            br
-            br
-            // Modal
-            #myModal.modal.fade(role='dialog')
-                .modal-dialog
-                    // Modal content
-                    .modal-content
-                        .modal-header
-                            button.close(type='button', data-dismiss='modal') ×
-                            h4.modal-title Add Items to Database
-                        .modal-body(style='font-size:13px')
-                            form.form-horizontal(action='/additems/confirmation')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Item ID:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter id number', name='iid')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Item Name:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter name', name='tname')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Description:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter description', name='desc')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Item Color:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter color (White, Natural, Grey)', name='col')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Item Price:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter price in dollars (no $ sign)', name='tprice')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Artist:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter artist name', name='aname')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Artist ID:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter artist id', name='aid')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Pic Count:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter number of pictures for item', name='picc')
-                                .form-group
-                                    label.control-label.col-sm-2(for='txt') Paypal ID:
-                                    .col-sm-10
-                                        input#email.form-control(type='text', placeholder='Enter id for item paypal button', name='pid')
-                                .form-group
-                                    .col-sm-offset-2.col-sm-10
-                                        button.btn.btn-default(type='submit') Submit
-            table
-                tr
-                    th Item id
-                    th Shirt Name
-                    th Color
-                    th Price ($)
-                    th Stock (S,M,L)
-                    th # Sold
-                    th Artist
-                each val in data.tshirts_objects
+    if(user.role === 'admin')    
+        .container
+            .main
+                h1(style='text-align: center;') Add Sale Items
+                hr
+                // Trigger the modal with a button
+                button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal' style="font-family: 'Playfair Display', serif") 
+                    span.glyphicon.glyphicon-plus
+                br
+                br
+                // Modal
+                #myModal.modal.fade(role='dialog')
+                    .modal-dialog
+                        // Modal content
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal') ×
+                                h4.modal-title Add Items to Database
+                            .modal-body(style='font-size:13px')
+                                form.form-horizontal(action='/additems/confirmation')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Item ID:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter id number', name='iid')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Item Name:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter name', name='tname')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Description:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter description', name='desc')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Item Color:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter color (White, Natural, Grey)', name='col')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Item Price:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter price in dollars (no $ sign)', name='tprice')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Artist:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter artist name', name='aname')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Artist ID:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter artist id', name='aid')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Pic Count:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter number of pictures for item', name='picc')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Paypal ID:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter id for item paypal button', name='pid')
+                                    .form-group
+                                        .col-sm-offset-2.col-sm-10
+                                            button.btn.btn-default(type='submit') Submit
+                table
                     tr
-                        td= val.itemid
-                        td= val.name
-                        td= val.color
-                        td= val.price
-                        td= val.stock
-                        td= val.sold
-                        td= val.artistname
-            br
+                        th Item id
+                        th Shirt Name
+                        th Color
+                        th Price ($)
+                        th Stock (S,M,L)
+                        th # Sold
+                        th Artist
+                    each val in data.tshirts_objects
+                        tr
+                            td= val.itemid
+                            td= val.name
+                            td= val.color
+                            td= val.price
+                            td= val.stock
+                            td= val.sold
+                            td= val.artistname
+                br
+    else
+        h1 You are not authorized to view this page.
