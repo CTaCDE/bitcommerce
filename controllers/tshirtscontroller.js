@@ -57,7 +57,7 @@ exports.additem_confirmation = function(req, res){
                 res.status(400).send("unable to save to database");
             });
     } else {
-        res.status(400).send("unable to save to database, no name given");
+        res.status(400).send("Add tshirt error: unable to save to database, no name given");
     }
 
     if(newt.name && newt.artistid) {
@@ -66,6 +66,40 @@ exports.additem_confirmation = function(req, res){
         });
     }
 };
+
+
+// Add ARTIST to database and display confimation page
+exports.addartist_confirmation = function(req, res){
+    var newa = new Artists({
+                artistid: req.query.arid,
+                name: req.query.arname,
+                bio: req.query.bio,
+                designs: req.query.designs,//array?
+                portfoliolink: req.query.link,
+            });
+
+    if(newa.name) {
+        newa.save()
+            .then(item => {
+                res.render('additems_confirmation', {title: 'Add Confirmation'});
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
+            });
+    } else {
+        console.log(newa);
+        res.status(400).send("Add artist error: unable to save to database, no name given");
+
+    }
+
+    // if(newt.name && newt.artistid) {
+    //     Artists.findOneAndUpdate({artistid: newt.artistid}, {$push : {'designs' : newt.itemid}}, function(err, artist) {
+    //         if(err) return console.error(err);
+    //     });
+    // }
+};
+
+
 
 // Display list of all tshirts
 exports.tshirts_list = function(req, res) {

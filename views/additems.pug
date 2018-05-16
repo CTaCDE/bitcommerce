@@ -66,6 +66,45 @@ block subcontent
                                     .form-group
                                         .col-sm-offset-2.col-sm-10
                                             button.btn.btn-default(type='submit') Submit
+                //Button for adding artist--------------------------          
+                button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal2' style="font-family: 'Playfair Display', serif") 
+                        Add Artists
+                br
+                br
+                // Modal
+                #myModal2.modal.fade(role='dialog')
+                    .modal-dialog
+                        // Modal content
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal') ×
+                                h4.modal-title Add Artists to Database
+                            .modal-body(style='font-size:13px')
+                                form.form-horizontal(action='/additems/artistconfirmation')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Artist ID:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter id number', name='arid')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Artist Name:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter name', name='arname')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Bio:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter Bio', name='bio')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Designs:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter Designs', name='designs')
+                                    .form-group
+                                        label.control-label.col-sm-2(for='txt') Porfolio Link:
+                                        .col-sm-10
+                                            input#email.form-control(type='text', placeholder='Enter Link', name='link')
+                                    .form-group
+                                        .col-sm-offset-2.col-sm-10
+                                            button.btn.btn-default(type='submit') Submit
+                //-------------------------------------------------------------------------- 
                 table
                     tr
                         th Item id
@@ -85,5 +124,6 @@ block subcontent
                             td= val.sold
                             td= val.artistname
                 br
+
     else
         h1 You are not authorized to view this page.

@@ -171,6 +171,8 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 app.get('/logs', passportConfig.isAuthenticated, logs_controller.logs_list);
 app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.additems);
+app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.addartist_confirmation);
+app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.additem_confirmation);
 
 // Our routes
 app.use('/', index);
@@ -184,7 +186,8 @@ app.use('/privacypolicy', privacypolicy);
 app.use('/submitdesign', submitdesign);
 // app.use('/orderhistory', orderhistory);
 app.use('/paypalipn', paypalipn);
-
+app.use('/logs', logs);
+app.use('/additems', additems);
 /**
  * API examples routes.
  */
