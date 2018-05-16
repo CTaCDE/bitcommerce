@@ -60,7 +60,8 @@ passport.use(new FacebookStrategy({
   clientSecret: process.env.FACEBOOK_SECRET,
   callbackURL: '/auth/facebook/callback',
   profileFields: ['name', 'email', 'link', 'locale', 'timezone', 'gender'],
-  passReqToCallback: true
+  passReqToCallback: true,
+  proxy: true
 }, (req, accessToken, refreshToken, profile, done) => {
 console.log("In facebook strategy");
 console.log("Current user: " + req.user);
