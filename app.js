@@ -259,7 +259,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
 /**
  * Google Analytics - Version Checking integration.
  */
@@ -274,7 +273,7 @@ const GA_TRACKING_ID = process.env.GA_TRACKING_ID;
 function trackEvent (category, action, label, value, cb) {
   const data = {
     // API Version.
-    v: '1',
+    v: '2',
     // Tracking ID / Property ID.
     tid: GA_TRACKING_ID,
     // Anonymous Client Identifier. Ideally, this should be a UUID that
@@ -308,6 +307,7 @@ app.get('/', (req, res, next) => {
     // considered an error.
     .catch(next);
 });
+
 
 module.exports = app;
 
