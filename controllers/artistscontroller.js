@@ -11,6 +11,15 @@ exports.artists_list = function(req, res) {
             Artists.find(callback).sort( { artistid:-1 } );
         }
     }, function(err, results) {
+        // Truncating artist bios to 100 characters for view
+        for (let i = 0; i < results.artists_objects.length; i++) {
+            var s = results.artists_objects[i].bio;
+            results.artists_objects[i].bio = s.substring(0,100);
+
+            if (s.length > 100) {
+                results.artists_objects[i].bio += "...";
+            }
+        }
         res.render('artists', {title: '193Tees Artists', error: err, data: results});
     });
 };
