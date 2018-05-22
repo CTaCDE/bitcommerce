@@ -1,4 +1,5 @@
 var User = require('../models/users.js');
+var Newsletters = require('../models/newsletters.js'); 
 var async = require('async');
 
 const { promisify } = require('util');
@@ -90,6 +91,48 @@ exports.getSignup = (req, res) => {
     title: 'Create Account'
   });
 };
+/**
+ * GET /newsletter
+ * home page.
+ */
+exports.getNewsletter = (req, res) => {
+  req.assert('email', 'Please enter a valid email address.').isEmail();
+  req.sanitize('email').normalizeEmail({ gmail_remove_dots: false });
+  
+  const errors = req.validationErrors();
+
+
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/');
+  }
+ 
+  var newnews = new Newsletters({
+        email: req.body.email,
+        contact: "yes"
+  });
+
+  Newsletters.findOne({email:req.body.email}, function(err, em) {
+    if(!em) {
+      console.log("new email");
+      newnews.save()
+        .then(item => {
+      
+        })
+        .catch(err => {
+    
+        });
+    } else {
+      // update contact to yes
+      console.log("email already exists");
+    }
+  });
+
+  req.flash('success', { msg: 'Success! You\'ve signed up for our newsletters!' });
+  return res.redirect('/');
+};
+
 
 /**
  * POST /signup
@@ -153,7 +196,7 @@ exports.postUpdateProfile = (req, res, next) => {
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/account');
+    return res.redirect('/');
   }
 
   User.findById(req.user.id, (err, user) => {

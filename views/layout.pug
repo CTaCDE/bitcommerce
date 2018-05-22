@@ -216,11 +216,20 @@ html
                         .col-md-6.s-c
                             .stay
                                 .stay-left
-                                    form
-                                        input(type='text', placeholder='Enter your email to join our newsletter', required='')
-                                .btn-1
-                                    form
-                                        input(type='submit', value='join')
+                                    form.form-horizontal(action='/newsletters', method='POST')
+                                        input(type='hidden', name='_csrf', value=_csrf)
+                                        .form-group
+                                            label.control-label.col-sm-2(for='txt')
+                                            .col-sm-10
+                                                input#email.form-control(type='text', placeholder='Enter email to join newsletter', name='email')
+                                        .form-group
+                                            .col-sm-offset-2.col-sm-10
+                                                button.btn.btn-default(type='submit') Join
+                                //    form
+                                //        input(type='text', placeholder='Enter your email to join our newsletter', required='')
+                                //.btn-1(type='submit', value='join')
+                                //    form
+                                //        input(type='submit', value='join')
                                 .clearfix  
                     .clearfix  
                 #thefoot.footer
