@@ -2769,7 +2769,7 @@ p.cart a {
 	margin-bottom: 2em;
 }
 }
-@media (max-width:1200px){
+@media (max-width:1210px) {
 
 	#mobileNavbar[aria-expanded='true']{
 		color: white;
@@ -2780,6 +2780,7 @@ p.cart a {
 		border-radius: 15px;
 		width: 45%;
 		margin-left: 55%;
+		box-shadow: 0px 3px 3px gray;
 	}
 	#mobileNavbar[aria-expanded='false']{
 		display: none;
