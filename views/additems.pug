@@ -114,6 +114,7 @@ block subcontent
                         th Stock (S,M,L)
                         th # Sold
                         th Artist
+                        th Delete Entry
                     each val in data.tshirts_objects
                         tr
                             td= val.itemid
@@ -123,6 +124,10 @@ block subcontent
                             td= val.stock
                             td= val.sold
                             td= val.artistname
+                            td
+                                form(action='/delete_entry/tshirt', method='post')
+                                    input(type='hidden', name='_csrf', value=_csrf)
+                                    button.btn-link(type='submit', name='itemid', value=val.itemid) Delete
                 br
                 br
 
@@ -133,11 +138,16 @@ block subcontent
                         th Artist id
                         th Name
                         th Designs
+                        th Delete Entry
                     each val in data.artists_objects
                         tr
                             td= val.artistid
                             td= val.name
                             td= val.designs
+                            td
+                                form(action='/delete_entry/artist', method='post')
+                                    input(type='hidden', name='_csrf', value=_csrf)
+                                    button.btn-link(type='submit', name='artistid', value=val.artistid) Delete
                 br
                 br
 

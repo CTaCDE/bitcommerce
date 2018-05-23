@@ -153,3 +153,27 @@ exports.privacypolicy = function(req, res) {
 exports.paypalipn = function(req, res) {
     ipn.ipnHandler(req,res);
 }
+
+/**
+ * POST /delete_entry/tshirt/
+ * Delete user account.
+ */
+exports.postDeleteTshirt = (req, res, next) => {
+  Tshirts.remove({ itemid: req.body.itemid }, (err) => {
+    if (err) { return next(err); }
+    req.flash('info', { msg: 'Tshirt ' + req.body.itemid + ' has been deleted.' });
+    res.redirect('/additems');
+  });
+};
+
+/**
+ * POST /delete_entry/artist
+ * Delete user account.
+ */
+exports.postDeleteArtist = (req, res, next) => {
+  Artists.remove({ artistid: req.body.artistid }, (err) => {
+    if (err) { return next(err); }
+    req.flash('info', { msg: 'Artist ' + req.body.artistid + ' has been deleted.' });
+    res.redirect('/additems');
+  });
+};
