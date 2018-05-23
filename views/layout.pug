@@ -215,15 +215,16 @@ html
                         .col-md-6.s-c
                             .stay
                                 .stay-left
-                                    form.form-horizontal(action='/newsletters', method='POST')
-                                        input(type='hidden', name='_csrf', value=_csrf)
-                                        .form-group
-                                            label.control-label.col-sm-2(for='txt')
-                                            .col-sm-10
-                                                input#email.form-control(type='text', placeholder='Enter email to join newsletter', name='email')
-                                        .form-group
-                                            .col-sm-offset-2.col-sm-10
-                                                button.btn.btn-default(type='submit') Join
+                                    if(title != 'Account Management')
+                                        form.form-horizontal(action='/newsletters', method='POST')
+                                            input(type='hidden', name='_csrf', value=_csrf)
+                                            .form-group
+                                                label.control-label.col-sm-2(for='txt')
+                                                .col-sm-10
+                                                    input#email.form-control(type='text', placeholder='Enter email to join newsletter', name='email')
+                                            .form-group
+                                                .col-sm-offset-2.col-sm-10
+                                                    button.btn.btn-default(type='submit') Join
                                 //    form
                                 //        input(type='text', placeholder='Enter your email to join our newsletter', required='')
                                 //.btn-1(type='submit', value='join')
@@ -239,8 +240,8 @@ html
                                 a(href='/terms') Terms of Service
                             li
                                 a(href='/privacypolicy') Privacy Policy
-                            li
-                                a(href='#') How To Buy
+                            //li
+                            //    a(href='#') How To Buy
                             //li
                             //    a(href='#') Delivery, FAQ
                         .col-md-2.abt

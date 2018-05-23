@@ -19,15 +19,37 @@ function loadChart(objects) {
     toolDate = d3.time.format("%d/%b/%y");
     //d3.csv("data.csv", function(error, data) {
     //var objects = !{JSON.stringify(data.logs_objects)};
-    objects.forEach(function(d){
-        d.date = parseDate(d.start_timestamp);
-        d.value = (+(Math.round((d.duration / 3600)+"e+2") + "e-2"));
+    // objects.forEach(function(d){
+    //     d.date = parseDate(d.start_timestamp);
+    //     d.value = (+(Math.round((d.duration / 3600)+"e+2") + "e-2"));
+    //     //d.value = d.duration / 3600;
+    //     delete d.start_timestamp;
+    //     delete d.duration;
+    //     d.year=d.date.getFullYear();
+    // });
+    for(var j = 0; j < objects.length; j++) {
+        objects[j].date = parseDate(objects[j].start_timestamp);
+        objects[j].value = (+(Math.round((objects[j].duration / 3600)+"e+2") + "e-2"));
         //d.value = d.duration / 3600;
-        delete d.start_timestamp;
-        delete d.duration;
-        d.year=d.date.getFullYear();
-    });
-    console.log(objects);
+        delete objects[j].start_timestamp;
+        delete objects[j].duration;
+        objects[j].year=objects[j].date.getFullYear();
+
+        var this_day = objects[j].date.getDate();
+        var this_month = objects[j].date.getMonth();
+        var this_year = objects[j].date.getFullYear();
+        for(var i = 0; i < j; i++) {
+            var other_date = objects[i].date;
+            var other_val = objects[i].value;
+            var other_day = other_date.getDate();
+            var other_month = other_date.getMonth();
+            var other_year = other_date.getFullYear();
+            if(other_day == this_day && other_month == this_month && other_year == this_year) {
+                objects[j].value = objects[j].value + other_val;
+            }
+        }
+    }
+    //console.log(objects);
         //set up an array of all the dates in the data which we need to work out the range of the data
         var dates = new Array();
         var values = new Array();
