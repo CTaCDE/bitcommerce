@@ -9,7 +9,7 @@ block subscripts
 block subcontent
     if(user.role === 'admin')    
         .main
-            h1(style='text-align: center;') Add Sale Items
+            h1(style='text-align: center;') Add Items
             hr
             // Trigger the modal with a button
             button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal' style="font-family: 'Playfair Display', serif") 
@@ -66,7 +66,7 @@ block subcontent
                                     .col-sm-offset-2.col-sm-10
                                         button.btn.btn-default(type='submit') Submit
             //Button for adding artist--------------------------          
-            button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal2' style="font-family: 'Playfair Display', serif") Add Artists
+            button.btn.btn-lg.pull-right(type='button', data-toggle='modal', data-target='#myModal2' style="font-family: 'Playfair Display', serif") Add Artist
             br
             br
             // Modal
@@ -103,6 +103,7 @@ block subcontent
                                     .col-sm-offset-2.col-sm-10
                                         button.btn.btn-default(type='submit') Submit
             //-------------------------------------------------------------------------- 
+            h3(style='text-align: center;') Tshirt Info
             .table-responsive
                 table
                     tr
@@ -122,6 +123,34 @@ block subcontent
                             td= val.stock
                             td= val.sold
                             td= val.artistname
+                br
+                br
+
+            h3(style='text-align: center;') Artist Info
+            .table-responsive
+                table
+                    tr
+                        th Artist id
+                        th Name
+                        th Designs
+                    each val in data.artists_objects
+                        tr
+                            td= val.artistid
+                            td= val.name
+                            td= val.designs
+                br
+                br
+
+            h3(style='text-align: center;') Newsletter Subscribers
+            .table-responsive
+                table
+                    tr
+                        th Email
+                        th Contact
+                    each val in data.newsletter_objects
+                        tr
+                            td= val.email
+                            td= val.contact
                 br
 
     else

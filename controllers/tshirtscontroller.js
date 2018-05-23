@@ -2,6 +2,7 @@ var Tshirts = require('../models/tshirts.js');
 var async = require('async');
 var ipn = require('../passport/ipnhandler');
 var Artists = require('../models/artists');
+var Newsletters = require('../models/newsletters');
 
 exports.index = function(req, res) {
     //res.send("NOT IMPLEMENTED: Site Home Page");
@@ -25,6 +26,12 @@ exports.additems = function(req, res) {
         },
         tshirts_objects: function(callback) {
             Tshirts.find(callback).sort( { itemid:-1 } );
+        },
+        artists_objects: function(callback) {
+            Artists.find(callback).sort( { artistid:-1 } );
+        },
+        newsletter_objects: function(callback) {
+            Newsletters.find(callback);
         }
     }, function(err, results) {
         res.render('additems', {title: '193Tees', error: err, data: results});
