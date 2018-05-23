@@ -1172,7 +1172,7 @@ i.phone {
   width: 19px;
   height: 21px;
   display: inline-block;
-  background: url(/images/img-sprite.png) no-repeat -235px -39px;
+  background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/img-sprite.png') no-repeat -235px -39px;
   vertical-align: middle;
   margin-right: 0.5em;
 }
@@ -1180,7 +1180,7 @@ i.add {
   width: 17px;
   height: 24px;
   display: inline-block;
-  background: url(/images/img-sprite.png) no-repeat -236px -11px;
+  background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/img-sprite.png') no-repeat -236px -11px;
   vertical-align: middle;
   margin-right: 0.5em;
 }
@@ -1188,7 +1188,7 @@ i.mail {
   width: 17px;
   height: 14px;
   display: inline-block;
-  background: url(/images/img-sprite.png) no-repeat -236px -76px;
+  background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/img-sprite.png') no-repeat -236px -76px;
   margin-right: 0.5em;
 }
 .our-st li {
@@ -1564,7 +1564,7 @@ list-style: none;
 	left: 2px;
 	width: 10px;
 	height: 7px;
-	background: url(/images/tick.png) no-repeat;
+	background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/tick.png') no-repeat;
 	text-align: center;
 }
 .sky-form .radio input:checked + i:after,
@@ -1882,7 +1882,7 @@ list-style: none;
 }
 .info {
    display: block;
-	background: url(/images/label_new.png) no-repeat;
+	background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/label_new.png') no-repeat;
 	text-indent: -9999px;
 	width: 75px;
 	height: 75px;
@@ -2928,7 +2928,7 @@ p.cart a {
   width: 33.33%;
 }
 i.ars {
-  background: url(/images/arrwss.png)no-repeat 16px -1px;
+  background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/arrwss.png')no-repeat 16px -1px;
   padding: 0px 33px;
 }
 .arriv-info2 {
