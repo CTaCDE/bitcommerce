@@ -6,11 +6,11 @@ block scripts
     block subscripts
 
 block content
-    .container(style="margin-left:28%")
-        .navbar.navbar
+    .container
+        .navbar.navbar-default(style="padding: 0; margin-left: 20px; margin-right: 30px;")
             .container-fluid
                 .navbar-header
-                    .nav.navbar-nav.collapse.navbar-collapse(style="font-family: 'Playfair Display', serif; font-size: 20px")
+                    ul.nav.navbar-nav(style="font-family: 'Playfair Display', serif; font-size: 20px")
                         li
                             a(href='/orderhistory') My Orders
                         if(user)
@@ -21,6 +21,7 @@ block content
                                     a(href='/additems') Add Sale Item
                         li
                             a(href='/submitdesign') Submit a Design
+                        
                         li
                             a(href='/logout') Logout
     hr

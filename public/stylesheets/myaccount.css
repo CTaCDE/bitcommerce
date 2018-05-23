@@ -38,8 +38,16 @@ p {
     padding-right: 0px;
     padding-left: 0px;
 }
+/*.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}*/
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
 
+@media (max-height: 1200px) {
+ }

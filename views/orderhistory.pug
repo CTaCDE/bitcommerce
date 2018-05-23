@@ -7,22 +7,23 @@ block subcontent
     .main
         h1(style='text-align: center;') My Orders
         hr
-        table
-            tr
-                th Order ID
-                th Order Date
-                th Items
-                th Quantities
-                th Item IDs
-            each val in data.orderhistory_objects
-                if(val.payer_email == user.email)
-                    tr
-                        td= val.txn_id
-                        td= val.payment_date
-                        td= val.item_name_list
-                        td= val.quantity_list
-                        td= val.item_number_list
-        br
+        .table-responsive
+            table
+                tr
+                    th Order ID
+                    th Order Date
+                    th Items
+                    th Quantities
+                    th Item IDs
+                each val in data.orderhistory_objects
+                    if(val.payer_email == user.email)
+                        tr
+                            td= val.txn_id
+                            td= val.payment_date
+                            td= val.item_name_list
+                            td= val.quantity_list
+                            td= val.item_number_list
+            br
         //form(target='_new', method='post', action='/paypalipn')
         //    input(type='hidden', name='first_name', value='fred')
         //    input(type='hidden', name='last_name', value='johnson')
