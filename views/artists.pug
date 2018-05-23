@@ -14,7 +14,7 @@ block content
                     each val in data.artists_objects    
                         li
                             a(href='artists/' + val.artistid)
-                                img.img-responsive(src='/images/artist' + val.artistid + '.jpg', alt='')
+                                img.img-responsive(src='https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/artist' + val.artistid + '.jpg', alt='')
                             .special-info.grid_1.simpleCart_shelfItem
                                 h4(style='text-align:center')= val.name
                                 .item_add
