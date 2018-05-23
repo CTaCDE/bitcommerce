@@ -15,6 +15,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const lusca = require('lusca');
+const multer = require('multer');
+const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 // Define all of the routes
 var index = require('./routes/index');
@@ -27,7 +29,7 @@ var logs = require('./routes/logs');
 var terms = require('./routes/terms');
 var privacypolicy = require('./routes/privacypolicy');
 var additems = require('./routes/additems');
-var submitdesign = require('./routes/submitdesign');
+// var submitdesign = require('./routes/submitdesign');
 var orderhistory = require('./routes/orderhistory');
 var paypalipn = require('./routes/paypalipn');
 
@@ -110,6 +112,8 @@ app.use(flash());
 app.use((req, res, next) => {
   if (req.path === '/api/upload') {
     next();
+  } else if (req.path === '/submitdesign') {
+    next();
   } else {
     lusca.csrf()(req, res, next);
   }
@@ -188,7 +192,7 @@ app.use('/about', about);
 app.use('/confirmation', confirmation);
 app.use('/terms',terms);
 app.use('/privacypolicy', privacypolicy);
-app.use('/submitdesign', submitdesign);
+// app.use('/submitdesign', submitdesign);
 // app.use('/orderhistory', orderhistory);
 app.use('/paypalipn', paypalipn);
 app.use('/logs', logs);
@@ -205,8 +209,11 @@ app.get('/api', apiController.getApi);
 // app.post('/api/clockwork', apiController.postClockwork);
 app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
 //app.get('/api/lob', apiController.getLob);
-//app.get('/api/upload', apiController.getFileUpload);
-//app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
+app.get('/api/upload', apiController.getFileUpload);
+app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
+
+app.get('/submitdesign', apiController.getFileUpload);
+app.post('/submitdesign', upload.single('myFile'), apiController.postFileUpload)
 
 /**
  * OAuth authentication routes. (Sign in)

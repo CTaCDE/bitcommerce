@@ -1,6 +1,15 @@
 const util = require('util');
 const request = require('request');
 const graph = require('fbgraph');
+
+// Google Cloud configurations
+// const Storage = require('@google-cloud/storage');
+// const storage = Storage({
+//   projectId: 'ecs193-192818',
+//   keyFilename: process.env.GCLOUD_KEY_FILE
+// });
+// const bucket = storage.bucket('ecs193-192818.appspot.com');
+
 // const twilio = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 // const clockwork = require('clockwork')({ key: process.env.CLOCKWORK_KEY });
 // const lob = require('lob')(process.env.LOB_KEY);
@@ -115,14 +124,14 @@ exports.getLob = (req, res, next) => {
  * File Upload API example.
  */
 
-// exports.getFileUpload = (req, res) => {
-//   res.render('api/upload', {
-//     title: 'File Upload'
-//   });
-// };
+exports.getFileUpload = (req, res) => {
+    res.render('api/upload', {
+        title: 'File Upload'
+    });
+};
 
-// exports.postFileUpload = (req, res) => {
-//   req.flash('success', { msg: 'File was uploaded successfully.' });
-//   res.redirect('/api/upload');
-// };
+exports.postFileUpload = (req, res) => {
+    req.flash('success', { msg: 'File was uploaded successfully.' });
+    res.redirect('/api/upload');
+};
 

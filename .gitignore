@@ -8,3 +8,4 @@ bin/ssl/*.srl
 bin/ssl/*.p12
 trans.txt
 .env
+uploads/*
