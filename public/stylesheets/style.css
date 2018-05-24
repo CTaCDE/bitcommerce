@@ -1070,7 +1070,7 @@ i.twiter {
   vertical-align: middle;
 }
 i.twiter:hover{
-  background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/')no-repeat -48px -48px;
+  background: url('https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/img-sprite.png')no-repeat -48px -48px;
 }
 i.be {
   width: 35px;

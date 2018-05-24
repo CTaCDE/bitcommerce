@@ -210,13 +210,13 @@ app.get('/api', apiController.getApi);
 // app.post('/api/twilio', apiController.postTwilio);
 // app.get('/api/clockwork', apiController.getClockwork);
 // app.post('/api/clockwork', apiController.postClockwork);
-app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
-//app.get('/api/lob', apiController.getLob);
-app.get('/api/upload', apiController.getFileUpload);
-app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
+// app.get('/api/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
+// app.get('/api/lob', apiController.getLob);
+// app.get('/api/upload', apiController.getFileUpload);
+// app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
 app.get('/submitdesign', apiController.getFileUpload);
-app.post('/submitdesign', upload.single('myFile'), apiController.postFileUpload)
+app.post('/submitdesign', upload.single('myFile'), apiController.postFileUpload);
 
 /**
  * OAuth authentication routes. (Sign in)

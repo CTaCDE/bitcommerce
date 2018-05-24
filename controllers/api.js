@@ -125,13 +125,14 @@ exports.getLob = (req, res, next) => {
  */
 
 exports.getFileUpload = (req, res) => {
-    res.render('api/upload', {
+    res.render('submitdesign', {
         title: 'File Upload'
     });
 };
 
 exports.postFileUpload = (req, res) => {
+    // Upload file handling
     req.flash('success', { msg: 'File was uploaded successfully.' });
-    res.redirect('/api/upload');
+    res.redirect('/submitdesign');
 };
 

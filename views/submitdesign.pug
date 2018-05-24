@@ -1,5 +1,3 @@
-# REFER TO upload.pug -- currently being rendered
-
 extends accountnavlayout.pug
 
 block subscripts
@@ -8,15 +6,25 @@ block subscripts
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     //script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 
-block subcontent
-    .main
-        h1(style='text-align: center;') Submit a Design
-        hr
-        a(href='https://goo.gl/forms/iz2tsXB53pG2622d2')
-            button.btn.btn-lg.pull-right(type='button', style="font-family: 'Playfair Display', serif") Upload Design
 
+block subcontent
+    h1(style='text-align: center;') Submit a Design
+    hr
+
+    .row
+      .col-sm-6
+        form(role='form', enctype='multipart/form-data', method='POST')
+            .form-group
+                label.control-label File Input
+                input(type='file', name='myFile')
+            button.btn.btn-primary(type='submit') Submit
+    br
+
+    .main
+        a(href='https://goo.gl/forms/iz2tsXB53pG2622d2')
+            button.btn.btn-lg.pull-right(type='button', style="display: none; font-family: 'Playfair Display', serif") Upload Design
         br
-        br
+
         
         p
             | We are a group of 4 Computer Science students developing a platform for art and design students to showcase their talent and creativity, so we are looking for people to submit their designs! We are selling T-shirts with designs from local artists to support the art community. For each shirt sold ($10), the designer/artist will get $1 (about 25% of the earnings after tshirt fees, paypal fees, etc.). We also can promote the artist/designer on our website by sharing an "About Me” and linking a portfolio. If you are interested, you should submit a design!
@@ -36,3 +44,4 @@ block subcontent
             br
             | Email us if you have any questions!
         br
+
