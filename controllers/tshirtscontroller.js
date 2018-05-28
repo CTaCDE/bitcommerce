@@ -52,7 +52,8 @@ exports.additem_confirmation = function(req, res){
                 paypal_id: req.query.pid,
                 pic_count: req.query.picc,
                 artistid: req.query.aid,
-                artistname: req.query.aname
+                artistname: req.query.aname,
+                display: "hidden"
             });
 
     if(newt.name) {
@@ -83,6 +84,7 @@ exports.addartist_confirmation = function(req, res){
                 bio: req.query.bio,
                 designs: req.query.designs,//array?
                 portfoliolink: req.query.link,
+                display: "hidden"
             });
 
     if(newa.name) {
@@ -159,10 +161,25 @@ exports.paypalipn = function(req, res) {
  * Delete user account.
  */
 exports.postDeleteTshirt = (req, res, next) => {
-  Tshirts.remove({ itemid: req.body.itemid }, (err) => {
-    if (err) { return next(err); }
-    req.flash('info', { msg: 'Tshirt ' + req.body.itemid + ' has been deleted.' });
-    res.redirect('/additems');
+  // removes from database
+  // Tshirts.remove({ itemid: req.body.itemid }, (err) => {
+  //   if (err) { return next(err); }
+  //   req.flash('info', { msg: 'Tshirt ' + req.body.itemid + ' has been deleted.' });
+  //   res.redirect('/additems');
+  // });
+  Tshirts.find({'itemid': req.body.itemid}, function(err, tshirt) {
+    var toggle;
+    if(err) return console.error(err);
+    if(tshirt[0].display == "hidden") {
+      toggle = "public";
+    } else {
+      toggle = "hidden";
+    }
+    Tshirts.findOneAndUpdate({itemid: req.body.itemid}, {$set : {'display' : toggle}}, function(err, tshirt) {
+      if(err) return console.error(err);
+      req.flash('info', { msg: 'Tshirt ' + req.body.itemid + ' display has been updated.' });
+      res.redirect('/additems');
+    });
   });
 };
 
@@ -171,9 +188,23 @@ exports.postDeleteTshirt = (req, res, next) => {
  * Delete user account.
  */
 exports.postDeleteArtist = (req, res, next) => {
-  Artists.remove({ artistid: req.body.artistid }, (err) => {
-    if (err) { return next(err); }
-    req.flash('info', { msg: 'Artist ' + req.body.artistid + ' has been deleted.' });
-    res.redirect('/additems');
+  // Artists.remove({ artistid: req.body.artistid }, (err) => {
+  //   if (err) { return next(err); }
+  //   req.flash('info', { msg: 'Artist ' + req.body.artistid + ' has been deleted.' });
+  //   res.redirect('/additems');
+  // });
+  Artists.find({'artistid': req.body.artistid}, function(err, artist) {
+    var toggle;
+    if(err) return console.error(err);
+    if(artist[0].display == "hidden") {
+      toggle = "public";
+    } else {
+      toggle = "hidden";
+    }
+    Artists.findOneAndUpdate({artistid: req.body.artistid}, {$set : {'display' : toggle}}, function(err, artist) {
+      if(err) return console.error(err);
+      req.flash('info', { msg: 'Artist ' + req.body.artistid + ' display has been updated.' });
+      res.redirect('/additems');
+    });
   });
 };

@@ -11,7 +11,8 @@ var ArtistsSchema = new Schema({
     name:           {type: String},
     bio:            {type: String},
     designs:        {type: Array},
-    portfoliolink:  {type: String}
+    portfoliolink:  {type: String},
+    display: 		{type: String}
 });
 
 module.exports = mongoose.model('artists', ArtistsSchema);

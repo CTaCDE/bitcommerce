@@ -12,25 +12,26 @@ block content
             .special-top
                 ul#item_container.grid_2
                     each val in data.artists_objects    
-                        li
-                            a(href='artists/' + val.artistid)
-                                img.img-responsive(src='https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/artist' + val.artistid + '.jpg', alt='')
-                            .special-info.grid_1.simpleCart_shelfItem
-                                h4(style='text-align:center')= val.name
-                                .item_add
-                                    .content
-                                        p #{val.bio}
-                                    //--------------
-                                    br
-                                    script.
-                                      document.querySelector('button').addEventListener('click', function() {
-                                      document.querySelector('#content').style.height= 'auto';
-                                      this.style.display= 'none';
-                                      });
-                                    #read  
-                                        a(href='artists/' + val.artistid) Read more
-                                    br
-                                    br
-                                    //--------------
-                                    a(href=val.portfoliolink) Portfolio
-                                center
+                        if(val.display == "public")    
+                            li
+                                a(href='artists/' + val.artistid)
+                                    img.img-responsive(src='https://storage.googleapis.com/ecs193-192818.appspot.com/public/images/artist' + val.artistid + '.jpg', alt='')
+                                .special-info.grid_1.simpleCart_shelfItem
+                                    h4(style='text-align:center')= val.name
+                                    .item_add
+                                        .content
+                                            p #{val.bio}
+                                        //--------------
+                                        br
+                                        script.
+                                          document.querySelector('button').addEventListener('click', function() {
+                                          document.querySelector('#content').style.height= 'auto';
+                                          this.style.display= 'none';
+                                          });
+                                        #read  
+                                            a(href='artists/' + val.artistid) Read more
+                                        br
+                                        br
+                                        //--------------
+                                        a(href=val.portfoliolink) Portfolio
+                                    center

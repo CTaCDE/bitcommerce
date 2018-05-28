@@ -17,8 +17,9 @@ var TshirtsSchema = new Schema({
     sizes:          {type: Array},
     paypal_id:      {type: String},
     pic_count:      {type: Number},
-    artistid:        {type: Number},
-    artistname:     {type: String}
+    artistid:       {type: Number},
+    artistname:     {type: String},
+    display:        {type: String}
 });
 
 module.exports = mongoose.model('tshirts', TshirtsSchema);
