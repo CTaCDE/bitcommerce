@@ -188,6 +188,7 @@ exports.postDeleteTshirt = (req, res, next) => {
  * Delete user account.
  */
 exports.postDeleteArtist = (req, res, next) => {
+  // removes from database
   // Artists.remove({ artistid: req.body.artistid }, (err) => {
   //   if (err) { return next(err); }
   //   req.flash('info', { msg: 'Artist ' + req.body.artistid + ' has been deleted.' });
