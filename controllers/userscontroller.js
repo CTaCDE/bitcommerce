@@ -126,11 +126,33 @@ exports.getNewsletter = (req, res) => {
     } else {
       // update contact to yes
       console.log("email already exists");
-    }
+      Newsletters.findOneAndUpdate({email:req.user.email}, {$set: {'contact' : "yes"}}, function(err, em) {
+        if(err) return console.error(err);
+    
+       });
+      }
   });
 
   req.flash('success', { msg: 'Success! You\'ve signed up for our newsletters!' });
   return res.redirect('/');
+};
+
+exports.unsubscribeNewsletter = (req, res) => {
+
+  // if (errors) {
+  //   req.flash('errors', errors);
+  //   return res.redirect('/');
+  // }
+  //console.log(req.user.email);
+  
+  Newsletters.findOneAndUpdate({email:req.user.email}, {$set: {'contact' : "no"}}, function(err, em) {
+    if(err) return console.error(err);
+    
+  });
+
+  req.flash('info', { msg: 'You\'ve unsubscribed from our newsletters :(' });
+  return res.redirect('/');
+
 };
 
 

@@ -182,6 +182,7 @@ app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.additems
 app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.addartist_confirmation);
 app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.additem_confirmation);
 app.post('/newsletters', userController.getNewsletter);
+app.post('/unsubscribe', userController.unsubscribeNewsletter);
 
 app.post('/delete_entry/tshirt', passportConfig.isAuthenticated, tshirts_controller.postDeleteTshirt);
 app.post('/delete_entry/artist', passportConfig.isAuthenticated, tshirts_controller.postDeleteArtist);

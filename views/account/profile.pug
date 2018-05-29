@@ -65,7 +65,14 @@ block subcontent
         button.btn.btn-primary(type='submit')
           i.fas.fa-lock.fa-sm
           | Change Password
-
+  .page-header
+    h3 Unsubscribe
+  form(action='/unsubscribe', method='post')
+    .form-group
+      input(type='hidden', name='_csrf', value=_csrf)
+      button.btn.btn-primary(type='submit')
+        i.fas.fa-lock.fa-sm
+        | Unsubscribe
   .page-header
     h3 Delete Account
 
