@@ -216,7 +216,7 @@ app.get('/api', apiController.getApi);
 // app.get('/api/upload', apiController.getFileUpload);
 // app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
-app.get('/submitdesign', apiController.getFileUpload);
+app.get('/submitdesign', passportConfig.isAuthenticated, apiController.getFileUpload);
 app.post('/submitdesign', upload.single('myFile'), apiController.postFileUpload);
 
 /**
