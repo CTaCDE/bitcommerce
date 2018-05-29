@@ -66,13 +66,13 @@ block subcontent
           i.fas.fa-lock.fa-sm
           | Change Password
   .page-header
-    h3 Unsubscribe
+    h3 Unsubscribe From Newsletters
   form(action='/unsubscribe', method='post')
     .form-group
       input(type='hidden', name='_csrf', value=_csrf)
       button.btn.btn-primary(type='submit')
         i.fas.fa-lock.fa-sm
-        | Unsubscribe
+        | Unsubscribe 
   .page-header
     h3 Delete Account
 
