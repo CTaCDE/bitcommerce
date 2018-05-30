@@ -126,7 +126,7 @@ exports.getNewsletter = (req, res) => {
     } else {
       // update contact to yes
       console.log("email already exists");
-      Newsletters.findOneAndUpdate({email:req.user.email}, {$set: {'contact' : "yes"}}, function(err, em) {
+      Newsletters.findOneAndUpdate({email:req.body.email}, {$set: {'contact' : "yes"}}, function(err, em) {
         if(err) return console.error(err);
     
        });
@@ -177,6 +177,28 @@ exports.postSignup = (req, res, next) => {
     email: req.body.email,
     password: req.body.password
   });
+
+  // add email to newsletters
+  var newnews = new Newsletters({
+        email: req.body.email,
+        contact: "yes"
+  });
+
+  Newsletters.findOne({email:req.body.email}, function(err, em) {
+    if(!em) {
+      newnews.save()
+        .then(item => {
+        })
+        .catch(err => {
+        });
+    } else {
+      // update contact to yes
+      Newsletters.findOneAndUpdate({email:req.body.email}, {$set: {'contact' : "yes"}}, function(err, em) {
+        if(err) return console.error(err);
+      });
+    }
+  });
+  // end add newsletter
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
     if (err) { return next(err); }
