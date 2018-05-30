@@ -68,8 +68,8 @@ exports.ipnHandler = function ipnHandler(req, res) {
         );
         // TODO: Implement post verification logic on ipnTransactionMessage
         // save transaction info to database
-        if(ipnTransactionMessage.receiver_email == "193tees@gmail.com") {
-          console.log("valid sender");
+        //if(ipnTransactionMessage.receiver_email == "193tees@gmail.com") {
+        //  console.log("valid sender");
           var c_item_name_list = [];
           var c_item_number_list = [];
           var c_quantity_list = [];
@@ -150,7 +150,7 @@ exports.ipnHandler = function ipnHandler(req, res) {
               if(err) return console.error(err);
             });
           }
-        }
+        //}
 
       } else if (body === "INVALID") {
         console.error(

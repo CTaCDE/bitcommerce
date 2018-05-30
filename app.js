@@ -114,6 +114,8 @@ app.use((req, res, next) => {
     next();
   } else if (req.path === '/submitdesign') {
     next();
+  } else if (req.path === '/paypalipn') {
+    next();
   } else {
     lusca.csrf()(req, res, next);
   }
