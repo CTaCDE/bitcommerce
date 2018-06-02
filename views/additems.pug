@@ -102,6 +102,56 @@ block subcontent
                                 .form-group
                                     .col-sm-offset-2.col-sm-10
                                         button.btn.btn-default(type='submit') Submit
+            //--------------------------------------------------------------------------
+            // Modal
+            #editModal.modal.fade(role='dialog')
+                .modal-dialog
+                    // Modal content
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal') ×
+                            h4.modal-title Edit Items in Database
+                        .modal-body(style='font-size:13px')
+                            form.form-horizontal(action='/additems/confirmation')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Item ID:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter id number', name='iid2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Item Name:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter name', name='tname2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Description:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter description', name='desc2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Item Color:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter color (White, Natural, Grey)', name='col2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Item Price:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter price in dollars (no $ sign)', name='tprice2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Artist:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter artist name', name='aname2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Artist ID:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter artist id', name='aid2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Pic Count:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter number of pictures for item', name='picc2')
+                                .form-group
+                                    label.control-label.col-sm-2(for='txt') Paypal ID:
+                                    .col-sm-10
+                                        input#email.form-control(type='text', placeholder='Enter id for item paypal button', name='pid2')
+                                .form-group
+                                    .col-sm-offset-2.col-sm-10
+                                        button.btn.btn-default(type='submit') Submit
             //-------------------------------------------------------------------------- 
             h3(style='text-align: center;') Tshirt Info
             .table-responsive
@@ -116,6 +166,7 @@ block subcontent
                         th Artist
                         th Display
                         th Toggle Display
+                        th Edit Entry
                     each val in data.tshirts_objects
                         tr
                             td= val.itemid
@@ -130,6 +181,13 @@ block subcontent
                                 form(action='/delete_entry/tshirt', method='post')
                                     input(type='hidden', name='_csrf', value=_csrf)
                                     button.btn-link(type='submit', name='itemid', value=val.itemid) Toggle
+                            td
+                                button.btn-link(type='button', data-toggle='modal', data-target='#editModal', value=val.itemid)
+                                    span.glyphicon.glyphicon-pencil
+
+
+
+
                 br
                 br
 
