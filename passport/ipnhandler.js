@@ -10,7 +10,7 @@ var Tshirts = require('../models/tshirts');
 /**
  * @const {boolean} sandbox Indicates if the sandbox endpoint is used.
  */
-const sandbox = false;
+const sandbox = true;
 
 /** Production Postback URL */
 const PRODUCTION_VERIFY_URI = "https://ipnpb.paypal.com/cgi-bin/webscr";
@@ -62,10 +62,10 @@ exports.ipnHandler = function ipnHandler(req, res) {
   request(options, function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
       // Check the response body for validation results.
-      if (body === "VERIFIED") {
-        console.log(
-          `Verified IPN: IPN message for Transaction ID: ${ipnTransactionMessage.txn_id} is verified.`
-        );
+      // if (body === "VERIFIED") {
+      //   console.log(
+      //     `Verified IPN: IPN message for Transaction ID: ${ipnTransactionMessage.txn_id} is verified.`
+      //   );
         // TODO: Implement post verification logic on ipnTransactionMessage
         // save transaction info to database
         //if(ipnTransactionMessage.receiver_email == "193tees@gmail.com") {
@@ -146,20 +146,25 @@ exports.ipnHandler = function ipnHandler(req, res) {
           });
           for(var i = 0; i < r_item_number_list.length; i++) {
             var shirtid = Number(r_item_number_list[i]);
-            var quant = Number(r_quantity_list[i]);
+            if(r_quantity_list[i]) {
+              var quant = Number(r_quantity_list[i]);  
+            } else {
+              quant = 0;
+            }
+            
             Tshirts.findOneAndUpdate({itemid: shirtid}, {$inc : {'sold' : quant}}, function(err, shirt) {
               if(err) return console.error(err);
             });
           }
         //}
 
-      } else if (body === "INVALID") {
-        console.error(
-          `Invalid IPN: IPN message for Transaction ID: ${ipnTransactionMessage.txn_id} is invalid.`
-        );
-      } else {
-        console.error("Unexpected reponse body.");
-      }
+      // } else if (body === "INVALID") {
+      //   console.error(
+      //     `Invalid IPN: IPN message for Transaction ID: ${ipnTransactionMessage.txn_id} is invalid.`
+      //   );
+      // } else {
+      //   console.error("Unexpected reponse body.");
+      // }
     } else {
       // Error occured while posting to PayPal.
       console.error(error);
