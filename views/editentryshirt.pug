@@ -1,0 +1,51 @@
+extends accountnavlayout.pug
+
+block subscripts
+
+block subcontent
+    if(user.role === 'admin')
+        form.form-horizontal(action='/update_entry/tshirt', method='POST')
+            .form-group
+                label.control-label.col-sm-2(for='txt') Item ID:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter id number', name='iid', value=data.tshirt_info[0].itemid, readonly)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Item Name:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter name', name='tname',value=data.tshirt_info[0].name)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Description:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter description', name='desc',value=data.tshirt_info[0].description)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Item Color:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter color (White, Natural, Grey)', name='col',value=data.tshirt_info[0].color)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Item Price:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter price in dollars (no $ sign)', name='tprice',value=data.tshirt_info[0].price)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Artist:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter artist name', name='aname',value=data.tshirt_info[0].artistname)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Artist ID:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter artist id', name='aid',value=data.tshirt_info[0].artistid)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Pic Count:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter number of pictures for item', name='picc',value=data.tshirt_info[0].pic_count)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Paypal ID:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter id for item paypal button', name='pid',value=data.tshirt_info[0].paypal_id)
+            .form-group
+                input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                    button.btn.btn-default(type='submit') Submit
+
+    else
+        h1 You are not authorized to view this page.

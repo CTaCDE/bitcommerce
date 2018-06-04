@@ -177,12 +177,16 @@ block subcontent
                             td= val.sold
                             td= val.artistname
                             td= val.display
-                            td
+                            td(style='text-align:center')
                                 form(action='/delete_entry/tshirt', method='post')
                                     input(type='hidden', name='_csrf', value=_csrf)
-                                    button.btn-link(type='submit', name='itemid', value=val.itemid) Toggle
-                            td
-                                button.btn-link(type='button', data-toggle='modal', data-target='#editModal', value=val.itemid)
+                                    button.btn-link(type='submit', name='itemid', value=val.itemid)
+                                        if(val.display === "hidden")
+                                            span.glyphicon.glyphicon-eye-open
+                                        else
+                                            span.glyphicon.glyphicon-eye-close
+                            td(style='text-align:center')
+                                a(href='/editentry/tshirt/'+val.itemid)
                                     span.glyphicon.glyphicon-pencil
 
 

@@ -185,9 +185,11 @@ app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.addartis
 app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.additem_confirmation);
 app.post('/newsletters', userController.getNewsletter);
 app.post('/unsubscribe', userController.unsubscribeNewsletter);
+app.get('/editentry/tshirt/:itemid', passportConfig.isAuthenticated, tshirts_controller.editentry_shirt);
 
 app.post('/delete_entry/tshirt', passportConfig.isAuthenticated, tshirts_controller.postDeleteTshirt);
 app.post('/delete_entry/artist', passportConfig.isAuthenticated, tshirts_controller.postDeleteArtist);
+app.post('/update_entry/tshirt', passportConfig.isAuthenticated, tshirts_controller.postUpdateTshirt);
 
 // Our routes
 app.use('/', index);

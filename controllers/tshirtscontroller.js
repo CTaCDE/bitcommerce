@@ -229,3 +229,35 @@ exports.postDeleteArtist = (req, res, next) => {
     });
   });
 };
+
+// page to edit tshirt entry
+exports.editentry_shirt = function(req, res) {
+    async.parallel({
+        tshirt_info: function(callback) {
+            Tshirts.find({'itemid': req.params.itemid}, callback);
+        }
+    }, function(err, results) {
+        res.render('editentryshirt', {title: '193Tees', error:err, data: results});
+    });
+};
+
+
+/**
+ * POST /update_entry/tshirt/
+ * Delete user account.
+ */
+exports.postUpdateTshirt = (req, res, next) => {
+                // 
+                // sold: 0,
+                // stock: [0,0,0],
+                // sizes: ["Small","Medium","Large"],
+                // 
+  Tshirts.find({'itemid': req.body.iid}, function(err, tshirt) {
+    if(err) return console.error(err);
+    Tshirts.findOneAndUpdate({itemid: req.body.iid}, {$set : {'color' : req.body.col, 'name' : req.body.tname, 'price' : req.body.tprice, 'description' : req.body.desc, 'paypal_id' : req.body.pid, 'pic_count' : req.body.picc, 'artistid' : req.body.aid, 'artistname' : req.body.aname} }, function(err, tshirt) {
+      if(err) return console.error(err);
+      req.flash('info', { msg: 'Tshirt ' + req.body.iid + ' has been updated.' });
+      res.redirect('/additems');
+    });
+  });
+};
