@@ -10,7 +10,7 @@ var Tshirts = require('../models/tshirts');
 /**
  * @const {boolean} sandbox Indicates if the sandbox endpoint is used.
  */
-const sandbox = true;
+const sandbox = false;
 
 /** Production Postback URL */
 const PRODUCTION_VERIFY_URI = "https://ipnpb.paypal.com/cgi-bin/webscr";
