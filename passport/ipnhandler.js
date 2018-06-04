@@ -101,7 +101,7 @@ exports.ipnHandler = function ipnHandler(req, res) {
             r_item_name_list.push(c_item_name_list[i][1]);
           }
           for(var i = 0; i < c_item_number_list.length; i++) {
-            r_item_number_list.push(c_item_number_list[i][1].split("_",1)[0]);
+            r_item_number_list.push(c_item_number_list[i][1].split("-",1)[0]);
           }
           for(var i = 0; i < c_quantity_list.length; i++) {
             r_quantity_list.push(c_quantity_list[i][1]);
@@ -138,7 +138,8 @@ exports.ipnHandler = function ipnHandler(req, res) {
             item_name_list: r_item_name_list,
             item_number_list: r_item_number_list,
             quantity_list: r_quantity_list,
-            size_list: r_size_list
+            size_list: r_size_list,
+            tees_email: ''
           });
           ord.save(function(err, ord) {
             if(err) return console.error(err);
