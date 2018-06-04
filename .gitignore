@@ -9,3 +9,4 @@ bin/ssl/*.p12
 trans.txt
 .env
 uploads/*
+ECS193-8e7b5d077bda.json
