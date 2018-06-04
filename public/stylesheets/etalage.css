@@ -118,7 +118,24 @@
 .etalage{ direction:ltr; }
 div.etalage_description{ position:absolute; bottom:0; left:0; z-index:999 }
 div.etalage_description.rtl{ direction:rtl; text-align:right }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
+ .etalage_thumb_image{
+ 	width: 95% !important;
+ }
+ .etalage_thumb{
+ 	width: 80% !important;
+ }
+ .etalage_zoom_area div{
+	width:380px !important;
+ }
+}
+@media only screen and (max-width: 700px) {
+ .etalage_thumb_image{
+ 	width: 95% !important;
+ }
+ #etalage .etalage_thumb{
+ 	width: 85% !important;
+ }
  .etalage_zoom_area div{
 	width:380px !important;
  }
@@ -128,8 +145,8 @@ div.etalage_description.rtl{ direction:rtl; text-align:right }
 	display:none;
  }
 }
- @media only screen and (max-width: 320px) {
+ /*@media only screen and (max-width: 700px) {
  #etalage .etalage_thumb{
  	width:90% !important;
- }
+ }*/
 }
