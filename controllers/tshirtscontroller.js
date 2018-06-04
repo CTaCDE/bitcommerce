@@ -3,6 +3,7 @@ var async = require('async');
 var ipn = require('../passport/ipnhandler');
 var Artists = require('../models/artists');
 var Newsletters = require('../models/newsletters');
+var OC = require('../models/orderconfirmations');
 
 exports.index = function(req, res) {
     //res.send("NOT IMPLEMENTED: Site Home Page");
@@ -134,11 +135,32 @@ exports.about = function(req, res) {
 // Display the submit design page
 exports.submitdesign = function(req, res) {
     res.render('submitdesign', {title: 'submitdesign'});
+
 }
 
 // Display the order confimation page
 exports.confirmation = function(req, res){
-    res.render('confirmation', {title: 'Confirmation'});
+     //get the paypal transaction ID from param
+    if(req.user){
+        var em = req.user.email; //get user's email
+    }else{
+        em = '';
+    }
+   
+    var transaction = new OC({
+                tx: req.query.tx;
+                email: em;
+    });
+    
+    transaction.save()
+        .then(item => {
+            res.render('confirmation', {title: 'Confirmation'});
+        })
+        .catch(err => {
+            res.status(400).send("unable to save to database");
+        });
+
+
 }
 
 // Display the Terms page
