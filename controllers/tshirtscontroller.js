@@ -140,16 +140,16 @@ exports.submitdesign = function(req, res) {
 
 // Display the order confimation page
 exports.confirmation = function(req, res){
-     //get the paypal transaction ID from param
+    //get the paypal transaction ID from param
     if(req.user){
         var em = req.user.email; //get user's email
-    }else{
+    } else {
         em = '';
     }
    
     var transaction = new OC({
-                tx: req.query.tx;
-                email: em;
+        tx: req.query.tx,
+        email: em
     });
     
     transaction.save()
@@ -159,8 +159,6 @@ exports.confirmation = function(req, res){
         .catch(err => {
             res.status(400).send("unable to save to database");
         });
-
-
 }
 
 // Display the Terms page
