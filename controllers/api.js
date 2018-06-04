@@ -1,6 +1,10 @@
 const util = require('util');
 const request = require('request');
 const graph = require('fbgraph');
+const uuidv4 = require("uuid/v4");
+const Storage = require("@google-cloud/storage");
+const CLOUD_BUCKET = "ecs193-192818.appspot.com";
+const storage = new Storage({keyFilename: "./ECS193-8e7b5d077bda.json"});
 
 // Google Cloud configurations
 // const Storage = require('@google-cloud/storage');
@@ -131,8 +135,22 @@ exports.getFileUpload = (req, res) => {
 };
 
 exports.postFileUpload = (req, res) => {
-    // Upload file handling
-    req.flash('success', { msg: 'File was uploaded successfully.' });
-    res.redirect('/submitdesign');
+    const bucketName = 'ecs193-192818.appspot.com';
+    var filename = "./uploads/" + req.file.filename;
+
+    // Uploads a local file to the bucket
+    storage
+        .bucket(bucketName)
+        .upload(filename)
+        .then(() => {
+            console.log(`${filename} uploaded to ${bucketName}.`);
+            req.flash('success', { msg: 'File was uploaded successfully.' });
+            res.redirect('/submitdesign');
+        })
+        .catch(err => {
+            console.error('ERROR:', err);
+            req.flash('errors', { msg: 'Something went wrong!' });
+            res.redirect('/submitdesign')
+        });
 };
 
