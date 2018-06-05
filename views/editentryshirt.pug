@@ -26,6 +26,10 @@ block subcontent
                 .col-sm-10
                     input#email.form-control(type='text', placeholder='Enter price in dollars (no $ sign)', name='tprice',value=data.tshirt_info[0].price)
             .form-group
+                label.control-label.col-sm-2(for='txt') Item Stock:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter item stock', name='stk',value=data.stockstr)
+            .form-group
                 label.control-label.col-sm-2(for='txt') Artist:
                 .col-sm-10
                     input#email.form-control(type='text', placeholder='Enter artist name', name='aname',value=data.tshirt_info[0].artistname)
