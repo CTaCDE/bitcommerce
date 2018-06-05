@@ -182,15 +182,18 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.get('/allorders', passportConfig.isAuthenticated, orderController.all_orders_list);
 app.get('/logs', passportConfig.isAuthenticated, logs_controller.logs_list);
 app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.additems);
-//app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.addartist_confirmation);
+app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.addartist_confirmation);
 app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.additem_confirmation);
 app.post('/newsletters', userController.getNewsletter);
 app.post('/unsubscribe', userController.unsubscribeNewsletter);
+
 app.get('/editentry/tshirt/:itemid', passportConfig.isAuthenticated, tshirts_controller.editentry_shirt);
+app.get('/editentry/artist/:artistid', passportConfig.isAuthenticated, tshirts_controller.editentry_artist);
 
 app.post('/delete_entry/tshirt', passportConfig.isAuthenticated, tshirts_controller.postDeleteTshirt);
 app.post('/delete_entry/artist', passportConfig.isAuthenticated, tshirts_controller.postDeleteArtist);
 app.post('/update_entry/tshirt', passportConfig.isAuthenticated, tshirts_controller.postUpdateTshirt);
+app.post('/update_entry/artist', passportConfig.isAuthenticated, tshirts_controller.postUpdateArtist);
 
 // Our routes
 app.use('/', index);
@@ -205,7 +208,7 @@ app.use('/privacypolicy', privacypolicy);
 // app.use('/orderhistory', orderhistory);
 app.use('/paypalipn', paypalipn);
 // app.use('/logs', logs);
-// app.use('/additems', additems);
+app.use('/additems', additems);
 
 
 /**

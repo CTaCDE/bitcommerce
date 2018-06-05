@@ -230,7 +230,7 @@ exports.postDeleteArtist = (req, res, next) => {
   });
 };
 
-// page to edit tshirt entry
+// GET page to edit tshirt entry
 exports.editentry_shirt = function(req, res) {
     async.parallel({
         tshirt_info: function(callback) {
@@ -241,10 +241,29 @@ exports.editentry_shirt = function(req, res) {
     });
 };
 
+// GET page to edit artist entry
+exports.editentry_artist = function(req, res) {
+    async.parallel({
+        artist_info: function(callback) {
+            Artists.find({'artistid': req.params.artistid}, callback);
+        }
+    }, function(err, results) {
+        var designstring = '';
+        for(var i = 0; i < results.artist_info[0].designs.length; i++) {
+            if(i != 0) {
+                designstring += ',';
+            }
+            designstring += results.artist_info[0].designs[i];
+        }
+        results.dstring=designstring;
+        console.log(results);
+        res.render('editentryartist', {title: '193Tees', error:err, data: results});
+    });
+};
+
 
 /**
  * POST /update_entry/tshirt/
- * Delete user account.
  */
 exports.postUpdateTshirt = (req, res, next) => {
                 // 
@@ -257,6 +276,23 @@ exports.postUpdateTshirt = (req, res, next) => {
     Tshirts.findOneAndUpdate({itemid: req.body.iid}, {$set : {'color' : req.body.col, 'name' : req.body.tname, 'price' : req.body.tprice, 'description' : req.body.desc, 'paypal_id' : req.body.pid, 'pic_count' : req.body.picc, 'artistid' : req.body.aid, 'artistname' : req.body.aname} }, function(err, tshirt) {
       if(err) return console.error(err);
       req.flash('info', { msg: 'Tshirt ' + req.body.iid + ' has been updated.' });
+      res.redirect('/additems');
+    });
+  });
+};
+
+
+/**
+ * POST /update_entry/artist/
+ */
+exports.postUpdateArtist = (req, res, next) => {
+  var designsnew = req.body.designs.split(',')                
+
+  Artists.find({'artistid': req.body.arid}, function(err, artist) {
+    if(err) return console.error(err);
+    Artists.findOneAndUpdate({artistid: req.body.arid}, {$set : {'name' : req.body.arname, 'bio' : req.body.bio, 'designs' : designsnew, 'portfoliolink' : req.body.link} }, function(err, artist) {
+      if(err) return console.error(err);
+      req.flash('info', { msg: 'Artist ' + req.body.arid + ' has been updated.' });
       res.redirect('/additems');
     });
   });

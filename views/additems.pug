@@ -204,16 +204,24 @@ block subcontent
                         th Designs
                         th Display
                         th Toggle Display
+                        th Edit Entry
                     each val in data.artists_objects
                         tr
                             td= val.artistid
                             td= val.name
                             td= val.designs
                             td= val.display
-                            td
+                            td(style='text-align:center')
                                 form(action='/delete_entry/artist', method='post')
                                     input(type='hidden', name='_csrf', value=_csrf)
-                                    button.btn-link(type='submit', name='artistid', value=val.artistid) Toggle
+                                    button.btn-link(type='submit', name='artistid', value=val.artistid)
+                                        if(val.display === "hidden")
+                                            span.glyphicon.glyphicon-eye-open
+                                        else
+                                            span.glyphicon.glyphicon-eye-close
+                            td(style='text-align:center')
+                                a(href='/editentry/artist/'+val.artistid)
+                                    span.glyphicon.glyphicon-pencil
                 br
                 br
 

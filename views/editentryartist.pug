@@ -1,0 +1,35 @@
+extends accountnavlayout.pug
+
+block subscripts
+
+block subcontent
+    if(user.role === 'admin')
+        form.form-horizontal(action='/update_entry/artist', method='POST')
+            .form-group
+                label.control-label.col-sm-2(for='txt') Artist ID:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter id number', name='arid', value=data.artist_info[0].artistid, readonly)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Artist Name:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter name', name='arname', value=data.artist_info[0].name)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Bio:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter Bio', name='bio', value=data.artist_info[0].bio)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Designs:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter Designs', name='designs', value=data.dstring)
+            .form-group
+                label.control-label.col-sm-2(for='txt') Porfolio Link:
+                .col-sm-10
+                    input#email.form-control(type='text', placeholder='Enter Link', name='link', value=data.artist_info[0].portfoliolink)
+            .form-group
+                input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                    button.btn.btn-default(type='submit') Submit
+
+    else
+        h1 You are not authorized to view this page.
