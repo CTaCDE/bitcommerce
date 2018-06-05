@@ -30,7 +30,7 @@ block subcontent
                         td= val.item_name_list
                         td= val.quantity_list
                         td= val.item_number_list
-                        td= '$'+val.payment_gross
+                        td= '$'+val.mc_gross
             br
         //form(target='_new', method='post', action='/paypalipn')
         //    input(type='hidden', name='first_name', value='fred')
@@ -45,39 +45,3 @@ block subcontent
         //    input(type='hidden', name='option_selection1_1', value='S')
         //    input(type='hidden', name='option_selection1_2', value='M')
         //    input(type='submit')
-
-
-        //form(target='paypal', action='https://www.paypal.com/cgi-bin/webscr', method='post')
-        //    input(type='hidden', name='cmd', value='_s-xclick')
-        //    input(type='hidden', name='hosted_button_id', value='6UV5FJNBPKPFN')
-        //    table
-        //        tr
-        //            td
-        //                input(type='hidden', name='on0', value='Sizes')
-        //                | Sizes
-        //        tr
-        //            td
-        //                select(name='os0')
-        //                    option(value='S') S 
-        //                    option(value='M') M 
-        //                    option(value='L') L 
-        //    input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
-        //    img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
-
-        //form(target='paypal', action='https://www.paypal.com/cgi-bin/webscr', method='post')
-        //    input(type='hidden', name='cmd', value='_s-xclick')
-        //    input(type='hidden', name='hosted_button_id', value='UMS8HEVCKTQR6')
-        //    table
-        //        tr
-        //            td
-        //                input(type='hidden', name='on0', value='Sizes')
-        //                | Sizes
-        //        tr
-        //            td
-        //                select(name='os0')
-        //                    option(value='S') S 
-        //                    option(value='M') M 
-        //                    option(value='L') L 
-        //   input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
-        //    img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
-

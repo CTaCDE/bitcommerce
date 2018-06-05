@@ -1,0 +1,43 @@
+extends accountnavlayout.pug
+
+block subscripts
+    link(href='stylesheets/logs.css', rel='stylesheet', type='text/css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    
+block subcontent
+    if(user.role === 'admin')
+        .main
+            h1(style='text-align: center;') All Order History
+            hr
+            br
+            br
+            h3(style='text-align: center;') Order Details
+            .table-responsive
+                table
+                    tr
+                        th ID
+                        th Date
+                        th Name
+                        th City
+                        th State
+                        th Items
+                        th Quantities
+                        th Item IDs
+                        th Sizes
+                        th Order Total
+                    each val in data.orderhistory_objects
+                        tr
+                            td= val.txn_id
+                            td= val.payment_date
+                            td= val.first_name + ' ' + val.last_name
+                            td= val.address_city
+                            td= val.address_state
+                            td= val.item_name_list
+                            td= val.quantity_list
+                            td= val.item_number_list
+                            td= val.size_list
+                            td= '$'+val.mc_gross
+                br
+
+    else
+        h1 You are not authorized to view this page.

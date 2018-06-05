@@ -19,6 +19,7 @@ delete_merged_emails = function(req) {
     });
 }
 
+// GET user orders
 exports.orders_list = function(req, res) {
     merge_emails(req);
    // delete_merged_emails(req);
@@ -35,5 +36,19 @@ exports.orders_list = function(req, res) {
         },
     }, function(err, results) {
         res.render('orderhistory', {title: '193Tees Orders', error: err, data: results});
+    });
+};
+
+// GET all orders
+exports.all_orders_list = function(req, res) {
+    async.parallel({
+        orderhistory_count: function(callback) {
+            Orderhistory.count(callback);
+        },
+        orderhistory_objects: function(callback) {
+           Orderhistory.find(callback).sort( { payment_date:-1 } );
+       },
+    }, function(err, results) {
+        res.render('allorders', {title: '193Tees Orders', error: err, data: results});
     });
 };

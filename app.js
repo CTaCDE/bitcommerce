@@ -179,9 +179,10 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
+app.get('/allorders', passportConfig.isAuthenticated, orderController.all_orders_list);
 app.get('/logs', passportConfig.isAuthenticated, logs_controller.logs_list);
 app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.additems);
-app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.addartist_confirmation);
+//app.get('/additems', passportConfig.isAuthenticated, tshirts_controller.addartist_confirmation);
 app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.additem_confirmation);
 app.post('/newsletters', userController.getNewsletter);
 app.post('/unsubscribe', userController.unsubscribeNewsletter);
@@ -203,8 +204,8 @@ app.use('/privacypolicy', privacypolicy);
 // app.use('/submitdesign', submitdesign);
 // app.use('/orderhistory', orderhistory);
 app.use('/paypalipn', paypalipn);
-app.use('/logs', logs);
-app.use('/additems', additems);
+// app.use('/logs', logs);
+// app.use('/additems', additems);
 
 
 /**
