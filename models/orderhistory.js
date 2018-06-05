@@ -27,7 +27,7 @@ var OrderhistorySchema = new Schema({
 	address_country_code:  	{type: String},
 	address_name:  			{type: String},
 	address_street:  		{type: String},
-	address_zip:  			{type: Number},
+	address_zip:  			{type: String},
 	receiver_email: 		{type: String},
 	receiver_id: 			{type: String},
 	item_name_list: 		{type: Array},

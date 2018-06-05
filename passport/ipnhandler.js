@@ -141,6 +141,8 @@ exports.ipnHandler = function ipnHandler(req, res) {
             size_list: r_size_list,
             tees_email: ''
           });
+console.log("ORDER: " );
+console.log(ord);
           ord.save(function(err, ord) {
             if(err) return console.error(err);
           });
