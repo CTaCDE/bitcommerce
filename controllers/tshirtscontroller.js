@@ -155,7 +155,7 @@ exports.submitdesign = function(req, res) {
 
 // Display the order confimation page
 exports.confirmation = function(req, res){
-    let __version__ = 'v1';
+    let __version__ = 'v2';
     //get the paypal transaction ID from param
     if(req.user){
         var em = req.user.email; //get user's email
