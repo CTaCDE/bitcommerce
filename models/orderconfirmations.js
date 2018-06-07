@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 
 var OrderConfirmationSchema = new Schema({
     email:       	{type: String},
-    tx:       		{type: String}
+    tx:       		{type: String},
+    version: 		{type: String}
 });
 
 module.exports = mongoose.model('orderconfirmations', OrderConfirmationSchema);
