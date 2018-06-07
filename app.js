@@ -33,6 +33,7 @@ var additems = require('./routes/additems');
 var orderhistory = require('./routes/orderhistory');
 var paypalipn = require('./routes/paypalipn');
 
+
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
@@ -186,6 +187,7 @@ app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.addarti
 app.post('/additems', passportConfig.isAuthenticated, tshirts_controller.additem_confirmation);
 app.post('/newsletters', userController.getNewsletter);
 app.post('/unsubscribe', userController.unsubscribeNewsletter);
+app.get('/secondhome', tshirts_controller.secondhome);
 
 app.get('/editentry/tshirt/:itemid', passportConfig.isAuthenticated, tshirts_controller.editentry_shirt);
 app.get('/editentry/artist/:artistid', passportConfig.isAuthenticated, tshirts_controller.editentry_artist);

@@ -5,6 +5,7 @@ var Artists = require('../models/artists');
 var Newsletters = require('../models/newsletters');
 var OC = require('../models/orderconfirmations');
 
+// original home page
 exports.index = function(req, res) {
     //res.send("NOT IMPLEMENTED: Site Home Page");
     async.parallel({
@@ -18,6 +19,20 @@ exports.index = function(req, res) {
         res.render('index', {title: '193Tees', error: err, data: results});
     });
 };
+
+// version 2 home page
+exports.secondhome = function(req, res) {
+    async.parallel({
+        tshirts_count: function(callback) {
+            Tshirts.count(callback);
+        },
+        tshirts_objects: function(callback) {
+            Tshirts.find(callback).sort( { itemid: -1 } );
+        }
+    }, function(err, results) {
+        res.render('v2/index', {title: '193Tees', error: err, data: results});
+    });
+}
 
 // Display add item page
 exports.additems = function(req, res) {
