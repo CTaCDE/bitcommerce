@@ -25,6 +25,7 @@ block subcontent
                         th Item IDs
                         th Sizes
                         th Order Total
+                        th Version
                     each val in data.orderhistory_objects
                         tr
                             td= val.txn_id
@@ -37,6 +38,7 @@ block subcontent
                             td= val.item_number_list
                             td= val.size_list
                             td= '$'+val.mc_gross
+                            td= val.version
                 br
 
     else

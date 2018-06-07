@@ -34,7 +34,8 @@ var OrderhistorySchema = new Schema({
     item_number_list:   	{type: Array},
     quantity_list:  		{type: Array},
     size_list:  			{type: Array},
-    tees_email: 			{type: String}
+    tees_email: 			{type: String},
+    version:    			{type: String}
 });
 
 module.exports = mongoose.model('orderhistorys', OrderhistorySchema);

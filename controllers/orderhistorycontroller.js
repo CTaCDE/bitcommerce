@@ -6,7 +6,7 @@ merge_emails = function(req) {
     OC.find({'email': req.user.email}, function(err, em) {
         if(err) return console.error(err);
         for(var i = 0; i < em.length; i++) {
-            Orderhistory.findOneAndUpdate({txn_id: em[i].tx}, {$set : {'tees_email' : req.user.email}}, function(err, oh) {
+            Orderhistory.findOneAndUpdate({txn_id: em[i].tx}, {$set : {'tees_email' : req.user.email, 'version' : em[i].version}}, function(err, oh) {
                 if(err) return console.error(err);
             });
         }

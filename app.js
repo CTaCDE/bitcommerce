@@ -33,6 +33,10 @@ var additems = require('./routes/additems');
 var orderhistory = require('./routes/orderhistory');
 var paypalipn = require('./routes/paypalipn');
 
+/*
+ *  Version Number
+ */
+let __version__ = 'v1';
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
