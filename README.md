@@ -1,6 +1,5 @@
 # 193Tees: Artist promotion platform and e-commerce website
-Developed by UC Davis students for ECS 193: Senior Design Project. 
-
+Developed by UC Davis students for ECS 193: Senior Design Project. See the Google For Education Case Study [here](https://edu.google.com/latest-news/stories/uc-davis-capstone/).
 
 ## Getting Started
 
